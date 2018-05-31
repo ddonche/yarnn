@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.5'
 
 # gems I've installed my damn self
 gem 'simple_form', '~> 3.4'
-gem 'devise', '~> 4.2', '>= 4.2.1'
+gem 'devise', '~> 4.2'
 gem 'voltaire', '~> 0.4.5'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
