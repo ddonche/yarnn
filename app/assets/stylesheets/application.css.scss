@@ -33,10 +33,12 @@
 
 .btn-primary,.btn-primary:active, .btn-primary:visited {
     background-color: #00b8ac !important;
+    border-color: #039087 !important;
 }
 
 .btn-primary:hover {
 		background-color: #039087 !important;
+		border-color: #039087 !important;
 }
 
 a {
@@ -47,15 +49,9 @@ a:hover {
 	color: #039087;
 }
 
-#logo {
-	font-size: 26px;
-	font-weight: 700;
-	text-transform: lowercase;
-	letter-spacing: -1px;
-	padding: 15px 0;
-	a {
-		color: #ededed;
-	}
+.navbar-brand {
+ margin-top: 0px;
+ padding: .5%;
 }
 
 #main_content {
