@@ -19,6 +19,7 @@ gem 'simple_form', '~> 3.4'
 gem 'devise', '~> 4.2'
 gem 'voltaire', '~> 0.4.5'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'bootstrap-sass', '~> 3.3.7'
 
 group :development, :test do
   gem 'sqlite3'
