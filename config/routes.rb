@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :links
+  resources :posts
   get 'static_pages/home'
   get 'static_pages/help'
 
-  root 'links#index'
+  root 'posts#index'
 end

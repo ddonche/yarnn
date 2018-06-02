@@ -1,0 +1,16 @@
+<% @posts.each do |post| %>
+  <div class="post row clearfix">
+    <h2>
+      <%= link_to post.title, post %><br>
+      <small class="author"><%= time_ago_in_words(post.created_at) %> by <%= post.user.username %></small>
+    </h2>
+    
+    <p><%= post.content %></p>
+
+    <% if post.url? %>
+    <div class="btn-group">
+        <a class="btn btn-default btn-sm" href="<%= post.url %>">Visit Link</a>
+    </div>
+    <% end %>
+  </div>
+<% end %>
