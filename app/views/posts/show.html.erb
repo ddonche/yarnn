@@ -1,12 +1,12 @@
 <div class="page-header">
 	
 		<div class="row">
-	    <div class="col-md-2-offeset-1">
+	    <div class="col-md-2">
 	    	<%= link_to user_path(@post.user) do
-		     	image_tag(@post.user.avatar.url, width: 60, class: "img-rounded pull-left") if @post.user.avatar?
+		     	image_tag(@post.user.avatar.url, width: 60, class: "img-circle pull-left") if @post.user.avatar?
 		  	end %>
 			</div>
-			<div class="col-md-4">
+				<div class="col-md-6-offset-1">
 		  	<h4><a href="<%= @post.url %>"><%= @post.title %></a><br> 
 		  	<small class="author"><%= link_to @post.user.username, user_path(@post.user) %> - <%= time_ago_in_words(@post.created_at) %> ago</small></h4>
 	    </div>
