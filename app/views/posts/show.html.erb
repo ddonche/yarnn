@@ -1,20 +1,25 @@
 <div class="page-header">
-  <h1><a href="<%= @post.url %>"><%= @post.title %></a><br> <small><%= time_ago_in_words(@post.created_at) %> by <%= @post.user.username %></small></h1>
+  <h4><a href="<%= @post.url %>"><%= @post.title %></a><br> <small><%= time_ago_in_words(@post.created_at) %> by <%= @post.user.username %></small></h4>
 </div>
 
-<div class="content">
+<div class="main-content">
 	<%= @post.content %>
-</div>
+</div><br />
 
 <% if @post.url? %>
 	<div class="btn-group">
-			<%= link_to 'Visit URL', @post.url, class: "btn btn-primary" %>
+			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
+				<span class="glyphicon glyphicon-globe" style="color: #ededed;"></span>
+			<% end %>
 	</div>
 <% end %>
 
 <% if @post.user == current_user %>
 	<div class="btn-group">
-		<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-default" %>
-		<%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-	</div>
+	<%= link_to edit_post_path(@post), class: "btn btn-default btn-sm", style: "color: #039087;" do %>
+		<span class="glyphicon glyphicon-cog"></span>
+	<% end %>
+	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm", style: "color: #039087;" do %>
+		<span class="glyphicon glyphicon-trash"></span>
+	<% end %>
 <% end %>
