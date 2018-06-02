@@ -48,6 +48,11 @@
       	<%= link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm", style: "color: #039087;" do %>
       		<span class="glyphicon glyphicon-trash"></span>
       	<% end %>
+      	</div>
+      <% end %>
+      
+      <% if post.user.signature? %>
+        <p><small class="author"><i><%= post.user.signature %></i></small></p>
       <% end %>
   </div>
 <% end %>
