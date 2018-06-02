@@ -6,16 +6,42 @@
 	<%= @post.content %>
 </div><br />
 
-<% if @post.url? %>
 	<div class="btn-group">
+		<% if @post.url? %>
+			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
+				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
+			<% end %>
+		<% else %>
+    	<%= link_to "#", class: "btn btn-default btn-sm", style: "color: #039087;" do %>
+    		<span class="glyphicon glyphicon-link"></span>
+    	<% end %>
+    <% end %>
+			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
+				<span class="glyphicon glyphicon-comment" style="color: #ededed;"></span>
+				<%= 18 %>
+			<% end %>
+			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
+				<span class="glyphicon glyphicon-forward" style="color: #ededed;"></span>
+				<%= 418 %>
+			<% end %>
+			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
+				<span class="glyphicon glyphicon-fire" style="color: #ededed;"></span>
+				<%= 6 %>
+			<% end %>
+		<% if @post.url? %>
 			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
 				<span class="glyphicon glyphicon-globe" style="color: #ededed;"></span>
+				<%= 13518 %>
 			<% end %>
+    <% else %>
+    	<%= link_to "#", class: "btn btn-default btn-sm", style: "color: #039087;" do %>
+    		<span class="glyphicon glyphicon-globe"></span>
+    	<% end %>
+    <% end %>
 	</div>
-<% end %>
 
 <% if @post.user == current_user %>
-	<div class="btn-group">
+	<div class="btn-group pull-right">
 	<%= link_to edit_post_path(@post), class: "btn btn-default btn-sm", style: "color: #039087;" do %>
 		<span class="glyphicon glyphicon-cog"></span>
 	<% end %>
