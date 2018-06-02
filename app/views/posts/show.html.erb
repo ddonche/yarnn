@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h4><a href="<%= @post.url %>"><%= @post.title %></a><br> <small><%= time_ago_in_words(@post.created_at) %> by <%= @post.user.username %></small></h4>
+  <h4><a href="<%= @post.url %>"><%= @post.title %></a><br> <small class="author"><%= link_to @post.user.username, user_path(@post.user) %> - <%= time_ago_in_words(@post.created_at) %> ago</small></h4>
 </div>
 
 <div class="main-content">
