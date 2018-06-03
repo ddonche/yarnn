@@ -1,63 +1,95 @@
-<div class="page-header">
-	
+<div class="main-content">
+  <div class="link row clearfix">
 		<div class="row">
 	    <div class="col-md-2">
 	    	<%= link_to user_path(@post.user) do
-		     	image_tag(@post.user.avatar.url, width: 60, class: "img-circle pull-left") if @post.user.avatar?
+		     	image_tag(@post.user.avatar.url, width: 55, class: "img-circle pull-left")
 		  	end %>
 			</div>
-				<div class="col-md-6-offset-1">
-		  	<h4><a href="<%= @post.url %>"><%= @post.title %></a><br> 
-		  	<small class="author"><%= link_to @post.user.username, user_path(@post.user) %> - <%= time_ago_in_words(@post.created_at) %> ago</small></h4>
+			
+			<div class="col-md-10-offset-2">
+		  	<h5 style="margin-top: 0px"><%= link_to @post.title, @post %><br> 
+		  	<small class="author"><%= link_to @post.user.username, user_path(@post.user) %> - <%= time_ago_in_words(@post.created_at) %> ago in
+		  	<% @post.tag_list.map.each do |tag| %>
+          <div class="tags">
+            <i><%= link_to tag, tag_path(tag) %></i>
+          </div>
+        <% end %></small></h5>
 	    </div>
 		</div>
-  
+      
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
+        <div class="post-text"><%= @post.content %></div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
+        <% if @post.user.signature? %>
+          <div class="signature"><i><%= @post.user.signature %></i></div>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
+      	<div class="btn-group">
+      		<% if @post.url? %>
+      			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
+      				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
+      			<% end %>
+      		<% else %>
+      			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
+      				<span class="glyphicon glyphicon-link"></span>
+      			<% end %>
+      		<% end %>
+      			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
+      				<span class="glyphicon glyphicon-comment" style="color: #ededed;"></span>
+      				<%= 9 %>
+      			<% end %>
+      			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
+      				<span class="glyphicon glyphicon-forward" style="color: #ededed;"></span>
+      				<%= 17 %>
+      			<% end %>
+      			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
+      				<span class="glyphicon glyphicon-fire" style="color: #ededed;"></span>
+      				<%= 3 %>
+      			<% end %>
+      		<% if @post.url? %>
+      			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
+      				<span class="glyphicon glyphicon-globe" style="color: #ededed;"></span>
+      				<%= 1821 %>
+      			<% end %>
+      		<% else %>
+      			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
+      				<span class="glyphicon glyphicon-globe"></span>
+      			<% end %>
+      		<% end %>
+      	</div>
+        
+        <% if @post.user == current_user %>
+        	<div class="btn-group pull-right">
+        	<%= link_to edit_post_path(@post), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+        		<span class="glyphicon glyphicon-cog"></span>
+        	<% end %>
+        	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+        		<span class="glyphicon glyphicon-trash"></span>
+        	<% end %>
+        	</div>
+        <% end %>
+        </div>
+      </div>
+      
+    
+  </div>
 </div>
-
-<div class="main-content">
-	<%= @post.content %>
-</div><br />
-
-	<div class="btn-group">
-		<% if @post.url? %>
-			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
-				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
-			<% end %>
-		<% else %>
-    	<%= link_to "#", class: "btn btn-default btn-sm", style: "color: #039087;" do %>
-    		<span class="glyphicon glyphicon-link"></span>
-    	<% end %>
-    <% end %>
-			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
-				<span class="glyphicon glyphicon-comment" style="color: #ededed;"></span>
-				<%= 18 %>
-			<% end %>
-			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
-				<span class="glyphicon glyphicon-forward" style="color: #ededed;"></span>
-				<%= 418 %>
-			<% end %>
-			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
-				<span class="glyphicon glyphicon-fire" style="color: #ededed;"></span>
-				<%= 6 %>
-			<% end %>
-		<% if @post.url? %>
-			<%= link_to @post.url, class: "btn btn-primary btn-sm" do %>
-				<span class="glyphicon glyphicon-globe" style="color: #ededed;"></span>
-				<%= 13518 %>
-			<% end %>
-    <% else %>
-    	<%= link_to "#", class: "btn btn-default btn-sm", style: "color: #039087;" do %>
-    		<span class="glyphicon glyphicon-globe"></span>
-    	<% end %>
-    <% end %>
-	</div>
-
-<% if @post.user == current_user %>
-	<div class="btn-group pull-right">
-	<%= link_to edit_post_path(@post), class: "btn btn-default btn-sm", style: "color: #039087;" do %>
-		<span class="glyphicon glyphicon-cog"></span>
-	<% end %>
-	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm", style: "color: #039087;" do %>
-		<span class="glyphicon glyphicon-trash"></span>
-	<% end %>
-<% end %>

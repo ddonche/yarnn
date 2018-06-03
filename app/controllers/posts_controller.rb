@@ -5,6 +5,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    if user_signed_in?
+      @post = current_user.posts.build
+    end
     if params[:tag]
       @posts = Post.tagged_with(params[:tag])
     else

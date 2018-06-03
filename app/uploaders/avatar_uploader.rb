@@ -1,6 +1,10 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :file
+  
+  def default_url(*args)
+    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default_avatar.jpg"].compact.join('_'))
+  end
 
   version :thumb do
     process :crop
