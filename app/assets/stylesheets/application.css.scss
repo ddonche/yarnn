@@ -12,7 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require jcrop
  */
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
@@ -95,4 +94,12 @@ a:hover {
 	color: #77777;
 	font-size: x-small;
 	padding-bottom: 1%;
+}
+
+.tags {
+  display: inline-block;
+  margin: 0 2px;
+  white-space: nowrap;
+  transition: all .15s ease-in-out;
+  text-decoration: underline;
 }

@@ -25,6 +25,11 @@
   </div>
   <br>
   <div class="form-group">
+    <%= f.label :tag_list %><i> Add up to 3 categories (separated by commas)</i>
+    <%= f.text_field :tag_list, class: "form-control", value: @post.tag_list.join(", ") %>
+  </div>
+  <br>
+  <div class="form-group">
     <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
   </div>
 

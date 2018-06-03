@@ -22,7 +22,8 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'rails-assets-jcrop', source: 'https://rails-assets.org'
+gem 'jcrop-rails-v2', '~> 0.9.12.3'
+gem 'acts-as-taggable-on', '~> 5.0'
 
 group :development, :test do
   gem 'sqlite3'

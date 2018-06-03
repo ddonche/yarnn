@@ -10,7 +10,12 @@
 			
 			<div class="col-md-10-offset-2">
 		  	<h5 style="margin-top: 0px"><%= link_to post.title, post %><br> 
-		  	<small class="author"><%= link_to post.user.username, user_path(post.user) %> - <%= time_ago_in_words(post.created_at) %> ago</small></h5>
+		  	<small class="author"><%= link_to post.user.username, user_path(post.user) %> - <%= time_ago_in_words(post.created_at) %> ago in
+		  	<% post.tag_list.map.each do |tag| %>
+          <div class="tags">
+            <i><%= link_to tag, tag_path(tag) %></i>
+          </div>
+        <% end %></small></h5>
 	    </div>
 		</div>
       
