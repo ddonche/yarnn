@@ -1,0 +1,69 @@
+
+
+<% @comments.each do |comment| %>
+  <div class="main-content">
+  <div class="link row clearfix">
+		<div class="row">
+	    <div class="col-md-2">
+	    	<%= link_to user_path(comment.user) do
+		     	image_tag(comment.user.avatar.url, width: 55, class: "img-circle pull-left") if comment.user.avatar?
+		  	end %>
+			</div>
+			
+			<div class="col-md-10-offset-2">
+		  	<h5 style="margin-top: 0px"><small class="author"><%= link_to comment.user.username, user_path(comment.user) %> - <%= time_ago_in_words(comment.created_at) %> ago in
+		  	</small></h5>
+	    </div>
+		</div>
+      
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
+        <div class="post-text"><%= comment.content %></div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
+        <% if comment.user.signature? %>
+          <div class="signature"><i><%= comment.user.signature %></i></div>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
+      	<div class="btn-group">
+      		
+      			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
+      				<span class="glyphicon glyphicon-fire" style="color: #ededed;"></span>
+      				<%= 3 %>
+      			<% end %>
+      		
+      	</div>
+        
+        <% if comment.user == current_user %>
+        	<div class="btn-group pull-right">
+        	<%= link_to edit_post_comment_path(comment), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+        		<span class="glyphicon glyphicon-cog"></span>
+        	<% end %>
+        	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+        		<span class="glyphicon glyphicon-trash"></span>
+        	<% end %>
+        	</div>
+        <% end %>
+        </div>
+      </div>
+      
+    
+  </div>
+</div>
+<% end %>
