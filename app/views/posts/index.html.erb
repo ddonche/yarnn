@@ -19,7 +19,18 @@
         &nbsp;
       </div>
       <div class="col-md-10-offset-2">
-        <p style="overflow:auto"><%= post.content %></p>
+        <div class="post-text"><%= post.content %></div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
+        <% if post.user.signature? %>
+          <div class="signature"><i><%= post.user.signature %></i></div>
+        <% end %>
       </div>
     </div>
     
@@ -75,16 +86,7 @@
         </div>
       </div>
       
-    <div class="row">
-      <div class="col-md-2">
-        &nbsp;
-      </div>
-      <div class="col-md-10-offset-2">
-        <% if post.user.signature? %>
-          <p><small class="author"><i><%= post.user.signature %></i></small></p>
-        <% end %>
-      </div>
-    </div>
+    
   </div>
 </div>
 <% end %>
