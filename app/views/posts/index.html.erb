@@ -9,7 +9,7 @@
 			</div>
 			
 			<div class="col-md-10-offset-2">
-		  	<h5><%= link_to post.title, post %><br> 
+		  	<h5 style="margin-top: 0px"><%= link_to post.title, post %><br> 
 		  	<small class="author"><%= link_to post.user.username, user_path(post.user) %> - <%= time_ago_in_words(post.created_at) %> ago</small></h5>
 	    </div>
 		</div>
@@ -19,7 +19,7 @@
         &nbsp;
       </div>
       <div class="col-md-10-offset-2">
-        <p><%= post.content %></p>
+        <p style="overflow:auto"><%= post.content %></p>
       </div>
     </div>
     
@@ -27,7 +27,7 @@
       <div class="col-md-2">
         &nbsp;
       </div>
-      <div class="col-md-10-offset-1">
+      <div class="col-md-10-offset-2">
       	<div class="btn-group">
       		<% if post.url? %>
       			<%= link_to post.url, class: "btn btn-primary btn-sm" do %>
@@ -79,7 +79,7 @@
       <div class="col-md-2">
         &nbsp;
       </div>
-      <div class="col-md-10-offset-1">
+      <div class="col-md-10-offset-2">
         <% if post.user.signature? %>
           <p><small class="author"><i><%= post.user.signature %></i></small></p>
         <% end %>
