@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :posts do
-    resources :comments do
-    end
+    resources :comments
   end
   resources :users
   get 'static_pages/home'
