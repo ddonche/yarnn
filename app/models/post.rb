@@ -3,8 +3,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   
   validates :content, presence: true, length: { minimum: 3, maximum: 400 }
-  validates :title, presence: true
-  
+
   acts_as_taggable
   
   def maximum_amount_of_tags

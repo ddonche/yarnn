@@ -55,7 +55,7 @@
       		<% end %>
       			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
       				<span class="glyphicon glyphicon-comment" style="color: #ededed;"></span>
-      				<%= 9 %>
+      				<span style="color: #ededed;"><%= @post.comments.count %></span>
       			<% end %>
       			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
       				<span class="glyphicon glyphicon-forward" style="color: #ededed;"></span>

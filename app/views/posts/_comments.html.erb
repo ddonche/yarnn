@@ -1,13 +1,17 @@
 <div class="main-content">
-  <div id="posts-form">
-    <h4><em><%= @post.comments.count %> Comments<a id="comment"></h4>
-  </div>
-  
-   <% if user_signed_in? %>
-      <%= render "comments/form" %><br/>
-    <% else %>
-      <div class="small"><em>You must be logged in to comment.</em></div>
-    <% end %>
+
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
+        <% if user_signed_in? %>
+          <%= render "comments/form" %><br/>
+        <% else %>
+          <div class="small"><em>You must be logged in to comment.</em></div>
+        <% end %>
+      </div>
+    </div>
     
     <%= render "comments/comments" %>
 
