@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
-  
+  strip_attributes
+
   validates :content, presence: true, length: { minimum: 3, maximum: 400 }
 
   acts_as_taggable

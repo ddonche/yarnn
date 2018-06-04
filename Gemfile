@@ -24,6 +24,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'jcrop-rails-v2', '~> 0.9.12.3'
 gem 'acts-as-taggable-on', '~> 5.0'
+gem "strip_attributes"
 
 group :development, :test do
   gem 'sqlite3'
