@@ -90,9 +90,15 @@ a:hover {
 	border-bottom: 1px solid #e9e9e9;
 }
 
+.comment-text {
+	overflow:auto;
+	margin-bottom: 1%;
+	padding-bottom: 1%;
+}
+
 .signature {
-	color: #77777;
-	font-size: x-small;
+	color: #777777;
+	font-size: 0.8em;
 	padding-bottom: 1%;
 }
 
@@ -102,4 +108,18 @@ a:hover {
   white-space: nowrap;
   transition: all .15s ease-in-out;
   text-decoration: underline;
+}
+
+.notation-wrapper {
+  background: #f2f2f2;
+  margin: 1% 0;
+  padding: 8px 12px;
+  border-top: 1px solid #e9e9e9;
+  font-size: 0.8em;
+}
+
+.notation-reply {
+  font-style: italic;
+  float: right;
+  font-size: 0.8em;
 }
