@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { minimum: 3, maximum: 400 }
 
   acts_as_taggable
+  acts_as_votable
   
   def maximum_amount_of_tags
     number_of_tags = tag_list_cache_on("tags").uniq.length

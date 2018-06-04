@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -56,6 +56,30 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully deleted.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def upvote
+    if @post.user != current_user
+      @post.upvote_by current_user
+    
+      voltaire_plus(1, :reputation, @post.user_id)
+      respond_to do |format|
+        format.html { redirect_to @post }
+        format.js
+      end
+    end
+  end
+  
+  def downvote
+    if @post.user != current_user
+      @post.downvote_by current_user
+  
+      voltaire_minus(1, :reputation, @post.user_id)
+      respond_to do |format|
+        format.html { redirect_to @post }
+        format.js
+      end
     end
   end
 

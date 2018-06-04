@@ -43,6 +43,26 @@
         &nbsp;
       </div>
       <div class="col-md-10-offset-2">
+        <div class="btn-group pull-right">
+          <%= link_to like_post_path(@post), method: :put, class: "btn btn-default btn-xs" do %>
+            <span class="glyphicon glyphicon-chevron-up"></span>
+            Upvote
+            <%= @post.get_upvotes.size %>
+          <% end %>
+          <%= link_to dislike_post_path(@post), method: :put, class: "btn btn-default btn-xs" do %>
+            <span class="glyphicon glyphicon-chevron-down">
+            Downvote
+            <%= @post.get_downvotes.size %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-10-offset-2">
       	<div class="btn-group">
       		<% if @post.url? %>
       			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
