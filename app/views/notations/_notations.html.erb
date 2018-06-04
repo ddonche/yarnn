@@ -3,13 +3,24 @@
   
 
         <div class="notation-wrapper">
-            <%= notation.content %> -
+          
+    <div class="row">
+      <div class="col-md-1">
+        <%= link_to user_path(notation.user) do
+		     	image_tag(notation.user.avatar.url, width: 25, class: "img-circle pull-left")
+		  	end %>
+      </div>
+      <div class="col-md-11">
+        <%= notation.content %> -
               <%= link_to notation.user.username, user_path(notation.user) %> <%= time_ago_in_words(notation.created_at) %> ago
             <% if (user_signed_in? && (current_user.id == notation.user_id)) %>
               <div class="notation-reply">
                 <%= link_to "delete", post_comment_notation_path(@post, comment, notation), method: :delete, data: { confirm: 'Are you sure?' } %>
               </div>
             <% end %>
+      </div>
+    </div>
+            
         </div>
 
 

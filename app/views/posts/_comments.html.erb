@@ -4,11 +4,12 @@
       <div class="col-sm-2">
         &nbsp;
       </div>
-      <div class="col-sm-10-offset-2">
+      <div class="col-sm-10">
+        <br/>
         <% if user_signed_in? %>
           <%= render "comments/form" %><br/>
         <% else %>
-          <div class="small"><em>You must be logged in to comment.</em></div>
+          <div class="small" style="color: #fc0000;"><em>You must be logged in to comment.</em></div>
         <% end %>
       </div>
     </div>
