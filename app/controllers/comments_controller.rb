@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :load_post
   before_action :authenticate_user!, except: [:show]
 
@@ -37,6 +37,30 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to @post, notice: 'Comment was deleted.' }
+    end
+  end
+  
+  def upvote
+    if @comment.user_id != current_user.id
+      @comment.upvote_by current_user
+      
+      voltaire_plus(1, :reputation, @comment.user_id)
+      respond_to do |format|
+        format.html { redirect_to @post }
+        format.js
+      end
+    end
+  end
+  
+  def downvote
+    if @comment.user_id != current_user.id
+      @comment.downvote_by current_user
+      
+      voltaire_minus(1, :reputation, @comment.user_id)
+      respond_to do |format|
+        format.html { redirect_to @post }
+        format.js
+      end
     end
   end
 

@@ -4,5 +4,6 @@ class Comment < ApplicationRecord
   has_many :notations, dependent: :destroy
   
   validates :content, presence: true, length: { minimum: 3, maximum: 300 }
+  acts_as_votable
 
 end

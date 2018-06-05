@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :avatar, AvatarUploader
+  extend FriendlyId
+  friendly_id :username, use: :slugged
          
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :crop_avatar
