@@ -36,7 +36,7 @@
       			<% end %>
       	</div>
         <% if comment.user == current_user %>
-        	<div class="btn-group pull-right">
+        	<div class="btn-group pull-right" style="margin-right: 4%">
           	<%= link_to edit_post_comment_path(@post, comment), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
           		<span class="glyphicon glyphicon-cog"></span>
           	<% end %>
@@ -63,6 +63,7 @@
               </div>
     		  </div>
         </div>
+        
       </div>
   </div>
 
