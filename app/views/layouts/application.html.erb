@@ -9,6 +9,7 @@
   </head>
 
   <body>
+  <div class="background">
     <header class="navbar navbar-default" style="border-radius:0px;" role = "navigation">
       <div class="navbar-inner">
         <div class="container">
@@ -29,7 +30,7 @@
       </div>
     </div>
   </header>
-  
+    
       <div id="main-content" class="container">
     		<% flash.each do |name, msg| %>
     			<%= content_tag(:div, msg, class: "alert alert-info") %>
@@ -39,6 +40,6 @@
     			<%= yield %>
     		</div>
     	</div>
-  	</div>
+    </div>
   </body>
 </html>

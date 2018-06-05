@@ -1,51 +1,54 @@
 <div class="main-content">
   <div class="link row clearfix">
-		<div class="row">
-	    <div class="col-md-2">
-	    	<%= link_to user_path(@post.user) do
-		     	image_tag(@post.user.avatar.url, width: 55, class: "img-circle pull-left")
-		  	end %>
-			</div>
-			
-			<div class="col-md-10-offset-2">
-		  	
-         <% if @post.user == current_user %>
-        	<div class="btn-group pull-right">
-        	<%= link_to edit_post_path(@post), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
-        		<span class="glyphicon glyphicon-cog"></span>
-        	<% end %>
-        	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
-        		<span class="glyphicon glyphicon-trash"></span>
-        	<% end %>
-        	</div>
-        <% end %>
-		  	<h5 style="margin-top: 0px"><%= link_to @post.title, @post %><br> 
-		  	<small class="author"><%= link_to @post.user.username, user_path(@post.user) %> - <%= time_ago_in_words(@post.created_at) %> ago in
-		  	<% @post.tag_list.map.each do |tag| %>
-          <div class="tags">
-            <i><%= link_to tag, tag_path(tag) %></i>
-          </div>
-        <% end %></small></h5>
-	    </div>
-		</div>
-      
-    <div class="row">
-      <div class="col-md-2">
-        &nbsp;
+    <div class="post-box">
+  		<div class="row">
+  	    <div class="col-md-2">
+  	    	<%= link_to user_path(@post.user) do
+  		     	image_tag(@post.user.avatar.url, width: 55, class: "img-circle pull-left")
+  		  	end %>
+  			</div>
+  			
+  			<div class="col-md-10-offset-2">
+  		  	
+           <% if @post.user == current_user %>
+          	<div class="btn-group pull-right">
+          	<%= link_to edit_post_path(@post), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+          		<span class="glyphicon glyphicon-cog"></span>
+          	<% end %>
+          	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+          		<span class="glyphicon glyphicon-trash"></span>
+          	<% end %>
+          	</div>
+          <% end %>
+  		  	<h5 style="margin-top: 0px"><%= link_to @post.title, @post %><br> 
+  		  	<small class="author"><%= link_to @post.user.username, user_path(@post.user) %> - <%= time_ago_in_words(@post.created_at) %> ago in
+  		  	<% @post.tag_list.map.each do |tag| %>
+            <div class="tags">
+              <i><%= link_to tag, tag_path(tag) %></i>
+            </div>
+          <% end %></small></h5>
+  	    </div>
+  		</div>
+        
+      <div class="row">
+        <div class="col-md-2">
+          &nbsp;
+        </div>
+        <div class="col-md-10-offset-2">
+          <div class="post-text"><%= @post.content %></div>
+        </div>
       </div>
-      <div class="col-md-10-offset-2">
-        <div class="post-text"><%= @post.content %></div>
-      </div>
-    </div>
     
-    <div class="row">
-      <div class="col-md-2">
-        &nbsp;
-      </div>
-      <div class="col-md-10-offset-2">
-        <% if @post.user.signature? %>
-          <div class="signature"><%= @post.user.signature %></div>
-        <% end %>
+    
+      <div class="row">
+        <div class="col-md-2">
+          &nbsp;
+        </div>
+        <div class="col-md-10-offset-2">
+          <% if @post.user.signature? %>
+            <div class="signature"><%= @post.user.signature %></div>
+          <% end %>
+        </div>
       </div>
     </div>
     

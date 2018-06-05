@@ -1,13 +1,16 @@
+
   <% if user_signed_in?  %>
-    <div class="top-form">
-      <div class="row">
-        <div class="col-md-2">
-          <%= link_to user_path(current_user) do
-  		     	image_tag(current_user.avatar.url, width: 55, class: "img-circle pull-left") 
-  		  	end %>
-        </div>
-        <div class="col-md-10">
-          <%= render "posts/quick_form" %>
+    <div class="main-content">
+      <div class="quick-post-box">
+        <div class="row">
+          <div class="col-md-2">
+            <%= link_to user_path(current_user) do
+    		     	image_tag(current_user.avatar.url, width: 55, class: "img-circle pull-left") 
+    		  	end %>
+          </div>
+          <div class="col-md-10">
+            <%= render "posts/quick_form" %>
+          </div>
         </div>
       </div>
     </div>
@@ -16,6 +19,7 @@
 <% @posts.each do |post| %>
   <div class="main-content">
   <div class="link row clearfix">
+    <div class="post-box">
 		<div class="row">
 	    <div class="col-md-2">
 	    	<%= link_to user_path(post.user) do
@@ -106,7 +110,7 @@
         	</div>
       </div>
     </div>
-    
+    </div>
   </div>
 </div>
       
