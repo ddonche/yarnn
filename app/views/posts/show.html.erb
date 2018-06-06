@@ -30,88 +30,65 @@
               <i><%= link_to tag, tag_path(tag) %></i>
             </div>
           <% end %></small></h5>
-  	    </div>
-  		</div>
-        
-      <div class="row">
-        <div class="col-md-2">
-          &nbsp;
-        </div>
-        <div class="col-md-10-offset-2">
-          <div class="post-text"><%= @post.content %></div>
-        </div>
-      </div>
-    
-    
-      <div class="row">
-        <div class="col-md-2">
-          &nbsp;
-        </div>
-        <div class="col-md-10-offset-2">
-          <% if @post.user.signature? %>
+  	       <br />
+            <div class="post-text"><%= @post.content %>
+           <% if @post.user.signature? %>
             <div class="signature"><%= @post.user.signature %></div>
           <% end %>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-md-2">
-        &nbsp;
-      </div>
-      <div class="col-md-10-offset-2">
-    	  <div class="btn-group">
-      		<% if @post.url? %>
-      			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
-      				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
-      			<% end %>
-      		<% else %>
-      			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
-      				<span class="glyphicon glyphicon-link"></span>
-      			<% end %>
-      		<% end %>
-      		<% if @post.url? %>
-      			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
-      				<span class="glyphicon glyphicon-globe" style="color: #ededed;"></span>
-      				<%= 1821 %>
-      			<% end %>
-      		<% else %>
-      			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
-      				<span class="glyphicon glyphicon-globe"></span>
-      			<% end %>
-      		<% end %>
+          </div>
+            <div class="post-buttons">
+              <div class="btn-group">
+            		<% if @post.url? %>
+            			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
+            				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
+            			<% end %>
+            		<% else %>
+            			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
+            				<span class="glyphicon glyphicon-link"></span>
+            			<% end %>
+            		<% end %>
+            		<% if @post.url? %>
+            			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
+            				<span class="glyphicon glyphicon-globe" style="color: #ededed;"></span>
+            				<%= 1821 %>
+            			<% end %>
+            		<% else %>
+            			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
+            				<span class="glyphicon glyphicon-globe"></span>
+            			<% end %>
+            		<% end %>
+          		</div>
+          		<div class="btn-group">
+          			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
+          				<span class="glyphicon glyphicon-comment" style="color: #ededed;"></span>
+          				<span style="color: #ededed;"><%= @post.comments.count %></span>
+          			<% end %>
+          			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
+          				<span class="glyphicon glyphicon-flash" style="color: #ededed;"></span>
+          				<%= 3 %>
+          			<% end %>
+          	  </div>
+          	
+              <div class="btn-group pull-right">
+                <%= link_to like_post_path(@post), method: :put, class: "btn btn-default btn-xs" do %>
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                  <%= @post.get_upvotes.size %>
+                <% end %>
+                <%= link_to dislike_post_path(@post), method: :put, class: "btn btn-default btn-xs" do %>
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                  <%= @post.get_downvotes.size %>
+                <% end %>
+                <%= link_to @post, class: "btn btn-default btn-xs" do %>
+          				<span class="glyphicon glyphicon-retweet"></span>
+          				<%= 17 %>
+            		<% end %>
+            	</div>
+            </div>
+    	    </div>
     		</div>
-    		
-    		  <div class="btn-group">
-      			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
-      				<span class="glyphicon glyphicon-comment" style="color: #ededed;"></span>
-      				<span style="color: #ededed;"><%= @post.comments.count %></span>
-      			<% end %>
-      			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
-      				<span class="glyphicon glyphicon-flash" style="color: #ededed;"></span>
-      				<%= 3 %>
-      			<% end %>
-      	  </div>
-      	
-          <div class="btn-group pull-right">
-            <%= link_to like_post_path(@post), method: :put, class: "btn btn-default btn-xs" do %>
-              <span class="glyphicon glyphicon-chevron-up"></span>
-              <%= @post.get_upvotes.size %>
-            <% end %>
-            <%= link_to dislike_post_path(@post), method: :put, class: "btn btn-default btn-xs" do %>
-              <span class="glyphicon glyphicon-chevron-down"></span>
-              <%= @post.get_downvotes.size %>
-            <% end %>
-            <%= link_to @post, class: "btn btn-default btn-xs" do %>
-      				<span class="glyphicon glyphicon-retweet"></span>
-      				<%= 17 %>
-        		<% end %>
-        	</div>
+        
       </div>
     </div>
-      
-    </div>
-  </div>
 </div>
 
 <%= render 'comments' %>

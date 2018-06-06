@@ -7,14 +7,16 @@ class WordsController < ApplicationController
       
       "bacon", "Bama", "baptist", "baseball", "bait", "banjo", "barbecue", "barb wire", "bayou", 
       "beer", "beer pong", "belt buckle", "bluegrass", "bolo tie",
-      "bonfire", "boot camp", "boots", "booze", "bourbon", "bow hunting", "britches", "bronco", "buck",
-      "buckskin", "Budweiser", "bull", "bull horns", "bullets", "burgers", "by God", 
+      "bonfire", "boot camp", "boots", "booze", "bourbon", "bow hunting", "Boy Scouts", "brambles", 
+      "britches", "bronco", "buck",
+      "buckskin", "Budweiser", "bull", "bull horns", "bullets", "bumpkin", "burgers", "by God", 
       
       "cactus", "Camaro", "camo", "camouflage", "camper", "camping", "Carhartts", "Carolina", "castrate", "catfish",
-      "cattle", "chainsaw", "chaps", "Chevy", "chew", "chickens", "chum", "church", "conservative",
-      "coon", "Coors", "Copenhagen", "corral", "Corvette", "cotton", "country", "cow", "cowboy", "crawdad",
+      "cattle", "CB radio", "chainsaw", "chaps", "Chevy", "chew", "chickens", "chum", "church", "community college", 
+      "conservative",
+      "coon", "Coors", "Copenhagen", "corral", "Corvette", "cotton", "country", "cow", "cowboy", "cracker", "crawdad",
       
-      "dang", "darn", "deer", "deet", "dern", "diesel", "dip", "dirt road", "Dale Earnhardt",
+      "dang", "darn", "deer", "deet", "deliverance", "dern", "diesel", "dip", "dirt road", "Dale Earnhardt",
       "dirt bikes", "Dixie", "dog", "double-barrel", "double wide", "Dr Pepper", "dually truck", "duck huntin",
       "dune buggy", 
       
@@ -27,30 +29,32 @@ class WordsController < ApplicationController
       "grandpa", "granny", "gravy", "grits", "grizzly", "gumbo", "guns", 
       "gussied up", "gut",
       
-      "hard hat", "henhouse", "herd", "hick", "hillbilly", "hogs", "holler", "holster", "honky-tonk", "horse", 
+      "ham radio", "hard hat", "henhouse", "herd", "hick", "hillbilly", "hogs", "holler", "holster", "honky", "honky-tonk", "horse", 
       "horseshoe", "horsepower", "hotdog", "hotrod", "hound dog", "howdy", "huntin", "hymnal", 
+      
+      "inbred",
       
       "jackrabbit", "jackknife", "Jeep", "jambalaya", "job site", "John Deere", "jukebox",
       
-      "keg", "Kentucky", "kerosine", "ketchup", "kin", "kinfolk", "knee-high", "knife",
+      "keg", "Kentucky", "kerosine", "ketchup", "kin", "kinfolk", "knee-high", "knife", "knuckle",
       
       "lift kit", "lightning bugs", "Louisiana", "LSU", "Lucky Strikes", "lunchbox", "lures", 
       
-      "mag", "mare", "Marine Corps", "Marlboro" "mayonnaise", "Michelob", "Mississippi", "moonshine", 
+      "mag", "mare", "Marine Corps", "Marlboro" "mayonnaise", "McRib", "Michelob", "Mississippi", "moonshine", 
       "Mtn Dew", "muddin", "muffler", "muscle car", "Mustang",
       
       "NASCAR", "National Anthem", "noodlin", "NRA",
       
-      "oak tree", "oil change", "Oklahoma", "Old Glory", "ornery", "oxy",
+      "oak tree", "oil change", "Oklahoma", "Old Glory", "ornery", "outhouse", "oxy",
       
-      "Pepsi", "pew", "pickup", "piddly", "pony", "pork chops", "possum", "post-hole digger",  
+      "Pepsi", "pew", "pickup", "piddly", "plantation", "pony", "pork chops", "possum", "post-hole digger",  
       "potato salad", "preacher", "prepper", "propane", 
       
       "quarterback", "quarter mile",
       
       "racecar", "rager", "ranch", "rattler", "Reba", "rebel", "reckon", "redneck", "red white and blue", "reel", "Remington",
       "republican", "reverend", "rifle", "riverboat", "rod", "rodeo", "roll tide",
-      "rooster", "Ruger", "rut", 
+      "rooster", "Ruger", "rural", "rut", 
       
       "saddle", "sammich", "sausage", "savannah", "shotgun", "shootin", "silencer", "sinker", "six pack",
       "skedaddle", "skeeter", "Skoal", "slaughter", "Smith & Wesson", "smoked", "snapping turtle", "Southern",
@@ -62,9 +66,9 @@ class WordsController < ApplicationController
       
       "uncle", "USA", 
       
-      "varmint", "veteran",
+      "values", "varmint", "veterans", "VFW", 
       
-      "waders", "wagon", "wagonwheel", "welder", "western", "whiskey", "white lightning", "Winchester", "work",
+      "waders", "wagon", "wagonwheel", "welder", "western", "whiskey", "white lightning", "white trash", "Winchester", "work",
       
       "y'all", "yankee", "yeehaw", "you betcha"]
     

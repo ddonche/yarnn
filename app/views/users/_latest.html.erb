@@ -26,24 +26,10 @@
                 <i><%= link_to tag, tag_path(tag) %></i>
               </div>
             <% end %></small></h5>
-    	    </div>
-    		</div>
-        
-        <div class="row">
-          <div class="col-md-2">
-            &nbsp;
-          </div>
-          <div class="col-md-10-offset-2">
+            <br />
             <div class="post-text"><%= post.content %></div>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-md-2">
-            &nbsp;
-          </div>
-          <div class="col-md-10-offset-2">
-          	  <div class="btn-group">
+            <div class="post-buttons">
+              <div class="btn-group">
             		<% if post.url? %>
             			<%= link_to post.url, class: "btn btn-primary btn-xs" do %>
             				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
@@ -89,9 +75,10 @@
           				<%= 17 %>
             		<% end %>
             	</div>
-            	
-          </div>
-        </div>
+            </div>
+    	    </div>
+    		</div>
+        
       </div>
     </div>
   </div>
