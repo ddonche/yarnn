@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   
   def show
     @page_title = @user.username
-    @posts = @user.posts
+    @posts = @user.posts.order('created_at DESC')
   end
   
   def following

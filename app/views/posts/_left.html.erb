@@ -1,0 +1,5 @@
+<div class="main-avatar">
+  <% if user_signed_in? %>
+    <%= image_tag(current_user.avatar.url, width: 205, class: "img-circle") %>
+  <% end %>
+</div>
