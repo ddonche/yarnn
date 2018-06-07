@@ -1,9 +1,12 @@
-<div class="container">
-  <div id="content-left" class="col-md-3">
-    <%= render 'users/bio' %>
+<div class="user-left-column">
+  <%= render 'avatar' %>
+  <%= render 'bio' %>
+</div>
+    
+<div class="user-right-column">
+  
+  <div id="content" class="col-md-8">
+    <%= render 'latest' %>
   </div>
   
-  <div id="content" class="col-md-6 col-md-offset-3">
-    <%= render 'users/latest' %>
-  </div>
 </div>

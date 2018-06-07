@@ -126,6 +126,7 @@ a:hover {
 .quick-post-box {
 	border-bottom: 1px solid #cbeeec;
 	padding-bottom: 1%;
+	padding-top: 2%;
 }
 
 .top-pad-2 {
@@ -186,4 +187,35 @@ a:hover {
   font-size: 0.8em;
   margin-right: 2%;
   margin-bottom: 1%;
+}
+
+.user-left-column {
+  width: 28%;
+  margin-left: 0;
+  margin-top: 0;
+  float: left;
+}
+
+.user-right-column {
+  width: 72%;
+  margin-right: 0;
+  margin-top: 0;
+  float: right;
+}
+
+.side-box {
+  width: 87%;
+  margin: 2% auto;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  overflow: hidden;
+}
+
+.side-content {
+  margin: 15px;
+  font-size: .75em;
+  li {
+    list-style-type: none;
+    padding: 3px;
+  }
 }
