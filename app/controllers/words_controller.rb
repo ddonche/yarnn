@@ -2,75 +2,94 @@ class WordsController < ApplicationController
 
   def generate_ipsum
     words = [ 
-      "4 wheeler", "18 wheeler", "ain't", "Alabama", "amen", "America", "ammo",
-      "angler", "antelope", "antlers", "AR-15", "Arkansas", "army", "ATV", 
+      "2nd Amendment", "4-wheeler", "18-wheeler", "afterburner", "ain't", "Alabama", "alligator", "amen", "America", "ammo", "ammunition",
+      "angler", "antelope", "antlers", "ape drape", "Appalachian", "AR-15", "Arkansas", "army", "ATV", 
       
-      "bacon", "Bama", "baptist", "baseball", "bait", "banjo", "barbecue", "barb wire", "bayou", 
-      "beer", "beer pong", "belt buckle", "bluegrass", "bolo tie",
-      "bonfire", "boot camp", "boots", "booze", "bourbon", "bow hunting", "Boy Scouts", "brambles", 
+      "backhoe", "backwoods", "bacon", "Bama", "baptist", "baseball", "bait", "banjo", "barbecue", "barb wire", "bayou", 
+      "beer", "beer pong", "belt buckle", "big-block", "bless her heart", "bluegrass", "bolo tie", "bolt action",
+      "bonfire", "boot camp", "boots", "booze", "Boss 302", "bourbon", "bow hunting", "Boy Scouts", "brambles", "breech-loaded",
       "britches", "bronco", "buck",
-      "buckskin", "Budweiser", "bull", "bull horns", "bullets", "bumpkin", "burgers", "by God", 
+      "buckskin", "Budweiser", "bull", "bull horns", "bullets", "bumpkin", "burgers", "burn rubber", "butter", "by God", 
       
-      "cactus", "Camaro", "camo", "camouflage", "camper", "camping", "Carhartts", "Carolina", "castrate", "catfish",
-      "cattle", "CB radio", "chainsaw", "chaps", "Chevy", "chew", "chickens", "chum", "church", "community college", 
-      "conservative",
-      "coon", "Coors", "Copenhagen", "corral", "Corvette", "cotton", "country", "cow", "cowboy", "cracker", "crawdad",
+      "cactus", "Cajun", "caliber", "Camaro", "camo", "camouflage", "camper", "camping", "carburetor", "Carhartts", 
+      "Carolina", "cartridge", "castrate", "catfish",
+      "cattle", "CB radio", "center mass", "chainsaw", "chamber", "chaps", "Charlotte", "Chevy", "chew", "chickens", "chiggers",
+      "Christian", "chuckwagon", "chum", "church",
+      "clodhopper", "clutch", "coal mine", "Coke", "cole slaw", "collard greens", "community college", "confederate", 
+      "conniption", "conservative", "Constitution",
+      "coon", "Coors", "Copenhagen", "copperhead", "cornbread", "corral", "Corvette", "cotton", "cottonmouth", "country", "cow", 
+      "cowboy", "cracker", "crawdad",
+      "creek", "Creole", "cross", "Cuda",
       
-      "dang", "darn", "deer", "deet", "deliverance", "dern", "diesel", "dip", "dirt road", "Dale Earnhardt",
+      "daddy", "dang", "darn", "deer", "deet", "deliverance", "dentures", "deputy", "dern", "diamonback", 
+      "diddly squat", "diesel", "dip", "dirt road", "Dale Earnhardt",
       "dirt bikes", "Dixie", "dog", "double-barrel", "double wide", "Dr Pepper", "dually truck", "duck huntin",
-      "dune buggy", 
+      "dump truck", "dune buggy", 
       
-      "eagle", "elbow grease", "elk", "estrus", 
+      "eagle", "elbow grease", "elk", "Elvis", "estrus", 
       
-      "farm", "fence", "fiddle", "firewood", "fireworks", "fishin", "fishin pole", "fixin", "fixin", "flag", "flatbed",
-      "Florida", "folks", "football", "Ford", "foreman", "Fox News",
+      "farm", "fence", "fiddle", "Firebird", "firewood", "fireworks", "firing pin", "fishin", "fishin pole", "fixin", "fixin", "flag", "flatbed",
+      "Florida", "folks", "football", "Ford", "foreman", "Fox News", "front porch", "full metal jacket",
       
-      "gambler", "gander", "garden", "gasoline", "gator", "gelding", "George Strait", "Georgia", "Glock", "goose", "gosh", "gospel", 
-      "grandpa", "granny", "gravy", "grits", "grizzly", "gumbo", "guns", 
+      "gambler", "gander", "garden", "gasoline", "gator", "gelding", "George Strait", "Georgia", "gizzard", "glasspack", "Glock", 
+      "goose", "gosh", "gospel", 
+      "Graceland", "grandpa", "granny", "gravy", "grits", "grizzly", "GTO Judge", "gumbo", "guns", 
       "gussied up", "gut",
       
-      "ham radio", "hard hat", "henhouse", "herd", "hick", "hillbilly", "hogs", "holler", "holster", "honky", "honky-tonk", "horse", 
-      "horseshoe", "horsepower", "hotdog", "hotrod", "hound dog", "howdy", "huntin", "hymnal", 
+      "ham radio", "hard hat", "Harley-Davidson", "hay", "heaven", "hell", "Hemi", "henhouse", "herd", "hick", "hillbilly", "hissy fit", "hogs", 
+      "holler", "holster", "honky", "honky-tonk", "hood scoop", "hornet", "horse", 
+      "horseshoe", "horsepower", "hotdog", "hotrod", "hound dog", "howdy", "huntin", "hushpuppy", "hymnal", 
       
-      "inbred",
+      "inbred", "iron sights",
       
-      "jackrabbit", "jackknife", "Jeep", "jambalaya", "job site", "John Deere", "jukebox",
+      "Jack Daniels", "jackrabbit", "jackknife", "jaw", "Jeep", "jambalaya", "Jesus", "job site", "John Deere", "John Wayne", "jukebox",
       
       "keg", "Kentucky", "kerosine", "ketchup", "kin", "kinfolk", "knee-high", "knife", "knuckle",
       
-      "lift kit", "lightning bugs", "Louisiana", "LSU", "Lucky Strikes", "lunchbox", "lures", 
+      "lever action", "lift kit", "lightning bugs", "Louisiana", "LSU", "Lucky Strikes", "lug nuts", "lunchbox", "lures", 
       
-      "mag", "mare", "Marine Corps", "Marlboro" "mayonnaise", "McRib", "Michelob", "Mississippi", "moonshine", 
-      "Mtn Dew", "muddin", "muffler", "muscle car", "Mustang",
+      "mag", "magazine", "magnum", "mama", "mare", "Marine Corps", "Marlboro" "mayonnaise", "McRib", "Memphis", "Michelob", "Mississippi", 
+      "molasses", "moonshine", 
+      "Mtn Dew", "muddin", "muffler", "mullet", "muscle car", "Mustang",
       
-      "NASCAR", "National Anthem", "noodlin", "NRA",
+      "NASCAR", "Nashville", "National Anthem", "naw", "noodlin", "NRA",
       
-      "oak tree", "oil change", "Oklahoma", "Old Glory", "ornery", "outhouse", "oxy",
+      "oak tree", "oil change", "Oklahoma", "okra", "Old Glory", "ornery", "outhouse", "overalls", "oxy", "Ozarks",
       
-      "Pepsi", "pew", "pickup", "piddly", "plantation", "pony", "pork chops", "possum", "post-hole digger",  
-      "potato salad", "preacher", "prepper", "propane", 
+      "pace car", "pardner", "passel", "Pepsi", "pew", "pickup", "piddly", "pit crew", "plantation", "plumb", "polecat", 
+      "pony", "ponycar", "pork chops", "possum", "post-hole digger",  
+      "potato salad", "preacher", "prepper", "primer", "propane", "pump action",
       
       "quarterback", "quarter mile",
       
-      "racecar", "rager", "ranch", "rattler", "Reba", "rebel", "reckon", "redneck", "red white and blue", "reel", "Remington",
-      "republican", "reverend", "rifle", "riverboat", "rod", "rodeo", "roll tide",
-      "rooster", "Ruger", "rural", "rut", 
+      "racecar", "ragamuffin", "rager", "ranch", "rascal", "rattler", "Reagan", "Reba", "rebel", "reckon", "recollection", 
+      "redneck", "red white and blue", "reel", "reload", "Remington",
+      "republican", "restrictor plate", "reverend", "revolver", "rifle", "rimfire", "riverboat", "rockin chair", "rod", 
+      "rodeo", "roll tide",
+      "rooster", "roustabout", "Ruger", "rural", "rut", 
       
-      "saddle", "sammich", "sausage", "savannah", "shotgun", "shootin", "silencer", "sinker", "six pack",
-      "skedaddle", "skeeter", "Skoal", "slaughter", "Smith & Wesson", "smoked", "snapping turtle", "Southern",
-      "sow", "spark plug", "spitter", "spurs", "station wagon", "steak", "steel-toed", "steer",
-      "Stetson", "supper", "swamp", "sweet tea", 
+      "saddle", "sammich", "sausage", "savannah", "scope", "scrambled eggs", "sermon", "shaker", "sheriff", 
+      "shifter", "shotgun", "shootin", "sideburns", "silencer", "sinker", 
+      "sinner", "six pack",
+      "skedaddle", "skeeter", "Skoal", "slaughter", "slingshot", "slop", "small-block", "Smith & Wesson", "smoked", "smoothbore", 
+      "snapping turtle", "Southern",
+      "sow", "spark plug", "spitter", "spoiler", "spurs", "station wagon", "steak", "steel-toed", "steer",
+      "Stetson", "succotash", "supercharged", "supper", "swamp", "sweet tea", 
       
-      "tackle", "tackle box", "tater", "Tennessee", "Texas", "throttle", "ticks", "tractor", "tradition", 
-      "trailer", "train", "transmission", "trolling", "turkey", 
+      "tackle", "tackle box", "tarnation", "tater", "Tennessee", "Texas", "these parts", "throttle", "ticks",
+      "torque", "tractor", "tradition", 
+      "trailer", "train", "Trans-Am", "transmission", "trigger", "trolling", "tuckered", "turkey", "turnip greens",
       
       "uncle", "USA", 
       
-      "values", "varmint", "veterans", "VFW", 
+      "values", "varmint", "veterans", "VFW", "Virginia",
       
-      "waders", "wagon", "wagonwheel", "welder", "western", "whiskey", "white lightning", "white trash", "Winchester", "work",
+      "waders", "wadn't", "wagon", "wagonwheel", "welder", "western", "West Virginia", "whiskey", "white lightning", "white trash", "whittle", 
+      "Winchester", "work",
       
-      "y'all", "yankee", "yeehaw", "you betcha"]
+      "y'all", "yankee", "yeehaw", "yellow jacket", "yonder", "you betcha", 
+      
+      "Z-28"]
     
     sentence_len1 = rand(5...20)
     ran_words1 = words.sample(sentence_len1).map(&:inspect).join(' ')

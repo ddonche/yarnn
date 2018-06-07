@@ -63,7 +63,7 @@ a:hover {
 	margin-bottom: 100px;
 	#content {
 		float: none;
-		padding-top: 1%;
+		/*padding-top: 1%;*/
 		background-color: #fff;
 		border: 1px solid #d9d9d9;
 	}
@@ -94,7 +94,7 @@ a:hover {
 #left-content {
 	margin-bottom: 100px;
 	#content {
-		padding-top: 1%;
+		/*padding-top: 1%;*/
 		background-color: #fff;
 		border: 1px solid #d9d9d9;
 	}
@@ -112,6 +112,10 @@ a:hover {
 	margin-bottom: 2%;
 	padding-bottom: 1%;
 	padding-left: 16%;
+}
+
+.ipsum {
+	padding: 3%;
 }
 
 .post-buttons {
