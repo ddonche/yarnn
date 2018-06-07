@@ -1,3 +1,14 @@
-<div class="main-avatar">
-  <%= image_tag(@user.avatar.url, width: 145, class: "img-circle") %>
+
+<div id="content">
+  <div class="main-avatar">
+    <%= image_tag(@user.avatar.url, width: 145, class: "img-circle") %>
+    <br />
+    <h4><%= @user.username %></h4> 
+    <% if @user.name %>
+      <%= @user.name %> <span class="glyphicon glyphicon-star"></span> <%= @user.reputation %>
+    <% else %>
+      <%= "I am anonymous." %> <span class="glyphicon glyphicon-star"></span> <%= @user.reputation %>
+    <% end %>
+  </div>
+  <div class="bio-signature"><%= @user.signature %></div>
 </div>
