@@ -25,8 +25,8 @@
   </div>
   <br>
   <div class="form-group">
-    <%= f.label :tag_list %><i> Add up to 3 categories (separated by commas)</i>
-    <%= f.text_field :tag_list, class: "form-control", value: @post.tag_list.join(", ") %>
+    <%= f.label :tag_list %><i> Add one category name</i>
+    <%= f.text_field :tag_list, class: "form-control", value: @post.tag_list %>
   </div>
   <br>
   <div class="form-group">

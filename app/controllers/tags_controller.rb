@@ -10,6 +10,7 @@ class TagsController < ApplicationController
     end
     @posts = Post.tagged_with(params[:tag]).order('created_at DESC')
     @tag_count = Post.tagged_with(params[:tag]).count
+    @tag = ActsAsTaggableOn::Tag.name
   end
   
   private
