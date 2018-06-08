@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   resources :users
   get 'static_pages/home'
   get 'static_pages/help'
-  get 'tags/:tag', to: 'tags#show', as: :tag
-  get 'tags', to: 'tags#index'
+  get 'y/:tag', to: 'tags#show', as: :tag
+  get 'yarnns', to: 'tags#index'
   put 'ipsum', to: "words#generate_ipsum"
 
   root 'posts#index'
