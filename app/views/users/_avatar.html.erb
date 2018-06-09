@@ -7,4 +7,6 @@
   <% else %>
     <%= "Mysterious Stranger" %> <span class="glyphicon glyphicon-star"></span> <%= @user.reputation %>
   <% end %>
+    <%= render 'shared/stats' %>
+    <%= render 'follow_form' if user_signed_in? %>
 </div>
