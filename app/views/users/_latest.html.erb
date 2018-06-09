@@ -26,8 +26,13 @@
                 <i><%= link_to tag, tag_path(tag) %></i>
               </div>
             <% end %></small></h5>
+            <br/>
+            <div class="post-text">
+      			  <%= if post.image? 
+                image_tag post.image, width: 440, class: "image"
+              end %>
             <br />
-            <div class="post-text"><%= post.content %></div>
+            <%= post.content %>
             <div class="post-buttons">
               <div class="btn-group">
             		<% if post.url? %>

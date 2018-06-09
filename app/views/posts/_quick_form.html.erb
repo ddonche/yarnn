@@ -17,7 +17,22 @@
   </div>
   
   <div class="form-group">
-    <%= f.submit "Post", class: "btn btn-xs btn-primary pull-right" %>
+    <%= f.label :image %> 
+    <%=  f.file_field :image, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+  	<%= link_to "#" do %>
+  		<span class="glyphicon glyphicon-picture" style="color: #00b8ac; margin-right: 6px;"></span>
+  	<% end %>
+  	<%= link_to "#" do %>
+  		<span class="glyphicon glyphicon-music" style="color: #00b8ac; margin-right: 6px;"></span>
+  	<% end %>
+  	<%= link_to "#" do %>
+  		<span class="glyphicon glyphicon-film" style="color: #00b8ac;"></span>
+  	<% end %>
+  	<%= f.submit "Post", class: "btn btn-xs btn-primary pull-right" %>
   </div>
 
 <% end %>
+

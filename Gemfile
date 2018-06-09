@@ -27,6 +27,7 @@ gem 'acts-as-taggable-on', '~> 5.0'
 gem "strip_attributes"
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'friendly_id', '~> 5.1.0'
+gem 'rmagick', '~> 2.16'
 
 group :development, :test do
   gem 'sqlite3'

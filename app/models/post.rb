@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   strip_attributes
 
   validates :content, presence: true, length: { minimum: 3, maximum: 400 }
+  
+  mount_uploader :image, ImageUploader
 
   acts_as_taggable
   ActsAsTaggableOn.force_lowercase = true
@@ -15,5 +17,8 @@ class Post < ApplicationRecord
     errors.add(:base, "Only 1 category allowed") if number_of_tags > 3
   end
   
-
+  private
+    def image_size_validation
+      errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+    end
 end

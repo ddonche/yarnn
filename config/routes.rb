@@ -18,13 +18,20 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  get 'static_pages/home'
+  get 'feed', to: 'static_pages#home'
   get 'static_pages/help'
   get 'y/:tag', to: 'tags#show', as: :tag
   get 'yarnns', to: 'tags#index'
+  match '/about', to: 'static_pages#about', via: 'get'
   put 'ipsum', to: "words#generate_ipsum"
   
   resources :relationships, only: [:create, :destroy]
 
-  root 'posts#index'
+  #root 'home#index'
+  
+  authenticated do
+    root :to => 'static_pages#home', as: :authenticated
+  end
+
+  root :to => 'home#index'
 end
