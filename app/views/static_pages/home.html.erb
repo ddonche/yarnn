@@ -53,9 +53,13 @@
           </div>
         <% end %></small></h5>
         <br/>
+        
         <div class="post-text">
   			  <%= if item.image? 
             image_tag item.image, class: "image"
+          end %>
+          <%= if item.video? 
+            video_tag item.video, class: "image", :controls => true
           end %>
           <br />
           <%= item.content %>
@@ -64,32 +68,32 @@
             <div class="post-buttons">
               <div class="btn-group">
             		<% if item.url? %>
-            			<%= link_to item.url, class: "btn btn-primary btn-xs" do %>
-            				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
+            			<%= link_to item.url do %>
+            				<%= image_tag("icons/link-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
             			<% end %>
             		<% else %>
-            			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
-            				<span class="glyphicon glyphicon-link"></span>
+            			<%= link_to "#" do %>
+            				<%= image_tag("icons/link-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
             			<% end %>
             		<% end %>
             		<% if item.url? %>
-            			<%= link_to item.url, class: "btn btn-primary btn-xs" do %>
-            				<span class="glyphicon glyphicon-globe" style="color: #ededed;"></span>
+            			<%= link_to item.url do %>
+            				<%= image_tag("icons/globe-blue.png", width: 24, alt: "link", style: "margin-right: 18px; text-decoration: none;") %>
             				<%= 1821 %>
             			<% end %>
             		<% else %>
-            			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
-            				<span class="glyphicon glyphicon-globe"></span>
+            			<%= link_to "#" do %>
+            				<%= image_tag("icons/globe-blue.png", width: 24, alt: "link", style: "margin-right: 18px; text-decoration: none;") %>
             			<% end %>
             		<% end %>
           		</div>
           		<div class="btn-group">
-          			<%= link_to item, class: "btn btn-primary btn-xs" do %>
-          				<span class="glyphicon glyphicon-comment" style="color: #ededed;"></span>
-          				<span style="color: #ededed;"><%= item.comments.count %></span>
+          			<%= link_to item do %>
+          				<%= image_tag("icons/comments-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
+          				<span style="color: #00b8ac;"><%= item.comments.count %></span>
           			<% end %>
-          			<%= link_to item, class: "btn btn-primary btn-xs" do %>
-          				<span class="glyphicon glyphicon-flash" style="color: #ededed;"></span>
+          			<%= link_to item do %>
+          				<%= image_tag("icons/dispute-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
           				<%= 3 %>
           			<% end %>
           	  </div>

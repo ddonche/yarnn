@@ -13,26 +13,17 @@
 
   <div class="form-group">
     <%= f.text_area :content, class: "form-control", placeholder: "Quick Post", rows: 3 %>
-    <small style="color: #c9c9c9">*use to make a quick post, edit after posting to add title, category, and url</small>
   </div>
   
-  <div class="form-group">
-    <%= f.label :image %> 
-    <%=  f.file_field :image, class: "form-control" %>
+  <div id="post-icons">
+    <%= link_to "#", :remote => true do %>
+      <%= image_tag("icons/camera.png", width: 24, alt: "camera", style: "margin-right: 9px; text-decoration: none;") %>
+      <%= image_tag("icons/microphone.png", width: 24, alt: "microphone", style: "margin-right: 9px; text-decoration: none;") %>
+      <%= image_tag("icons/film.png", width: 24, alt: "film", style: "margin-right: 9px; text-decoration: none;") %>
+      <%= image_tag("icons/categories.png", width: 24, alt: "categories", style: "margin-right: 9px; text-decoration: none;") %>
+      <%= image_tag("icons/link.png", width: 24, alt: "link", style: "margin-right: 9px; text-decoration: none;") %>
+    <% end %>
+    <%= image_submit_tag("icons/submit.png", width: 24, class: "pull-right") %>
   </div>
-  
-  <div class="form-group">
-  	<%= link_to "#" do %>
-  		<span class="glyphicon glyphicon-picture" style="color: #00b8ac; margin-right: 6px;"></span>
-  	<% end %>
-  	<%= link_to "#" do %>
-  		<span class="glyphicon glyphicon-music" style="color: #00b8ac; margin-right: 6px;"></span>
-  	<% end %>
-  	<%= link_to "#" do %>
-  		<span class="glyphicon glyphicon-film" style="color: #00b8ac;"></span>
-  	<% end %>
-  	<%= f.submit "Post", class: "btn btn-xs btn-primary pull-right" %>
-  </div>
-
 <% end %>
 

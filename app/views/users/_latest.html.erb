@@ -37,12 +37,12 @@
             <div class="post-buttons">
               <div class="btn-group">
             		<% if post.url? %>
-            			<%= link_to post.url, class: "btn btn-primary btn-xs" do %>
-            				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
+            			<%= link_to post.url do %>
+            				<%= image_tag("icons/link-blue.png", width: 24, alt: "link", style: "margin-right: 9px; text-decoration: none;") %>
             			<% end %>
             		<% else %>
-            			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
-            				<span class="glyphicon glyphicon-link"></span>
+            			<%= link_to "#" do %>
+            				<%= image_tag("icons/link-blue.png", width: 24, alt: "link", style: "margin-right: 9px; text-decoration: none;") %>
             			<% end %>
             		<% end %>
             		<% if post.url? %>

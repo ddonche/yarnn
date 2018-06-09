@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { minimum: 3, maximum: 400 }
   
   mount_uploader :image, ImageUploader
+  mount_uploader :video, VideoUploader
 
   acts_as_taggable
   ActsAsTaggableOn.force_lowercase = true

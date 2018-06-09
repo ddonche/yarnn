@@ -22,12 +22,17 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'carrierwave-video-thumbnailer', '~> 0.1.4'
+gem 'carrierwave-video', '~> 0.6.0'
+gem 'carrierwave-audio', '~> 1.0', '>= 1.0.8'
+gem 'carrierwave-ffmpeg', '~> 1.0'
 gem 'jcrop-rails-v2', '~> 0.9.12.3'
 gem 'acts-as-taggable-on', '~> 5.0'
 gem "strip_attributes"
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'friendly_id', '~> 5.1.0'
 gem 'rmagick', '~> 2.16'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 
 group :development, :test do
   gem 'sqlite3'
