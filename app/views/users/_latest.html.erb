@@ -29,10 +29,11 @@
             <br/>
             <div class="post-text">
       			  <%= if post.image? 
-                image_tag post.image, width: 440, class: "image"
+                image_tag post.image, class: "image"
               end %>
             <br />
             <%= post.content %>
+            </div>
             <div class="post-buttons">
               <div class="btn-group">
             		<% if post.url? %>

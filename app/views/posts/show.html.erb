@@ -31,16 +31,18 @@
             </div>
           <% end %></small></h5>
   	       <br/>
+          
           <div class="post-text">
     			  <%= if @post.image? 
-              image_tag @post.image, width: 440, class: "image"
+              image_tag @post.image, class: "image"
             end %>
-            <br />
+          <br />
             <%= @post.content %>
-           <% if @post.user.signature? %>
-            <div class="signature"><%= @post.user.signature %></div>
-          <% end %>
+            <% if @post.user.signature? %>
+              <div class="signature"><%= @post.user.signature %></div>
+            <% end %>
           </div>
+          
             <div class="post-buttons">
               <div class="btn-group">
             		<% if @post.url? %>
