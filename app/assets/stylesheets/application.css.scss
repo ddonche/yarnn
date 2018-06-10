@@ -21,8 +21,8 @@
 
 /* navbar */
 .navbar-default {
-    background-color: #00b8ac;
-    border-color: #039087;
+    background-color: #c91111;
+    border-bottom: 3px solid #00b8ac;
     box-shadow: 0 0 1px 0 #999;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: #039087;
+    color: #00b8ac;
 }
 
 .btn-primary,.btn-primary:active, .btn-primary:visited {

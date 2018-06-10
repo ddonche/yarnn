@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'yarnns', to: 'tags#index'
   match '/about', to: 'static_pages#about', via: 'get'
   put 'ipsum', to: "words#generate_ipsum"
+  get 'ipsum', to: "words#generate_ipsum"
   
   resources :relationships, only: [:create, :destroy]
 
