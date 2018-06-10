@@ -131,6 +131,12 @@ a:hover {
 	padding: 3%;
 }
 
+#post-icons {
+  a:hover {
+  text-decoration: none;
+  }
+}
+
 .post-buttons {
 	overflow: auto;
 	padding-bottom: 1%;

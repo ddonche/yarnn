@@ -11,6 +11,10 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.order('created_at DESC')
     end
+    respond_to do |format| 
+      format.html
+      format.js
+    end
   end
 
   def show
