@@ -43,6 +43,11 @@
     border-color: #039087 !important;
 }
 
+.btn-red,.btn-red:active, .btn-red:visited {
+    background-color: #c91111 !important;
+    color: #fff !important;
+}
+
 .btn-primary:hover {
 		background-color: #039087 !important;
 		border-color: #039087 !important;
@@ -120,7 +125,6 @@ a:hover {
 	overflow: auto;
 	margin-bottom: 2%;
 	padding-bottom: 1%;
-	padding-left: 16%;
 }
 
 .ipsum {

@@ -23,7 +23,7 @@
 	<% end %> 
 
 <% @posts.each do |post| %>
-  <div class="main-content">
+<div class="main-content">
   <div class="link row clearfix">
     <div class="post-box">
 		<div class="row">
@@ -52,8 +52,17 @@
             <i><%= link_to tag, tag_path(tag) %></i>
           </div>
         <% end %></small></h5>
-  	       <br />
-            <div class="post-text"><%= post.content %>
+
+          <div class="post-text">
+    			  <%= if post.image? 
+              image_tag post.image, class: "image"
+            end %>
+            <%= if post.video? 
+              video_tag post.video, class: "image", :controls => true
+            end %>
+            <br />
+            <%= post.content %>
+          </div>
           </div>
             <div class="post-buttons">
               <div class="btn-group">
@@ -104,7 +113,6 @@
             	</div>
             </div>
     	    </div>
-    		</div>
     </div>
   </div>
 </div>

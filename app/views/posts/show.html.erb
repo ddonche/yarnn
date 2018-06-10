@@ -30,14 +30,16 @@
               <i><%= link_to tag, tag_path(tag) %></i>
             </div>
           <% end %></small></h5>
-  	       <br/>
           
-          <div class="post-text">
-    			  <%= if @post.image? 
-              image_tag @post.image, class: "image"
-            end %>
-          <br />
-            <%= @post.content %>
+            <div class="post-text">
+      			  <%= if @post.image? 
+                image_tag @post.image, class: "image"
+              end %>
+              <%= if @post.video? 
+                video_tag @post.video, class: "image", :controls => true
+              end %>
+              <br />
+              <%= @post.content %>
             <% if @post.user.signature? %>
               <div class="signature"><%= @post.user.signature %></div>
             <% end %>
