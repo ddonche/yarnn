@@ -1,32 +1,9 @@
 <div class="main-content">
-  <div class="quick-post-box">
-    <div class="row">
-      <div class="col-sm-2">
-        <div class="top-pad-2">
-        <% if user_signed_in? %>
-          <%= link_to user_path(current_user) do
-      		  image_tag(current_user.avatar.url, width: 40, class: "img-circle pull-left") 
-      		end %>
-    		<% end %>
-    		</div>
-      </div>
-      <div class="col-sm-10">
-        <br/>
-        <% if user_signed_in? %>
-          <%= render "comments/form" %><br/>
-        <% else %>
-          <div class="small" style="color: #fc0000;"><em><strong>You must be logged in to comment.</strong></em></div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-    <%= render "comments/comments" %>
+  <%= render "comments/comments" %>
 
   <% if @post.comments.count != 0 %>
-  
     <%= link_to new_post_comment_path(@post), :remote => true do %>
       <a href="#comment">New Comment</a>
     <% end %>
-  
   <% end %>
 </div>

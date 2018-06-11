@@ -2,123 +2,114 @@
   <%= render 'posts/left' %>
 </div>
 
-<div class="user-right-column">
-  
-  <div id="content" class="col-md-8">
-  <% if user_signed_in?  %>
-    <div class="main-content">
-      <div class="quick-post-box">
-        <div class="row">
-          <div class="col-md-2">
-
-            <%= link_to user_path(current_user) do
-    		     	image_tag(current_user.avatar.url, width: 45, class: "img-circle pull-left" ) 
+<div class="user-mid-column">
+  <div id="content" class="col-md-12">
+    <% @feed_items.each do |item| %>
+      <div class="main-content">
+      <div class="link row clearfix">
+        <div class="post-box">
+    		<div class="row">
+    	    <div class="col-md-2">
+    	    	<%= link_to user_path(item.user) do
+    		     	image_tag(item.user.avatar.url, width: 45, class: "img-circle pull-left")
     		  	end %>
-
-          </div>
-          <div class="col-md-10">
-            <%= render "posts/quick_form" %>
-          </div>
+    			</div>
+    			
+    			<div class="col-md-10-offset-2">
+    			  <% if item.user == current_user %>
+            	<div class="btn-group pull-right">
+            	<%= link_to edit_post_path(item), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+            		<span class="glyphicon glyphicon-cog"></span>
+            	<% end %>
+            	<%= link_to item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+            		<span class="glyphicon glyphicon-trash"></span>
+            	<% end %>
+            	</div>
+            <% end %>
+    		  	<h5 style="margin-top: 0px"><%= link_to item.title, item %><br> 
+    		  	<small class="author"><%= link_to item.user.username, user_path(item.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.user.reputation %>
+             - <%= time_ago_in_words(item.created_at) %> ago in
+    		  	<% item.tag_list.map.each do |tag| %>
+              <div class="tags">
+                <i><%= link_to tag, tag_path(tag) %></i>
+              </div>
+            <% end %></small></h5>
+            
+            <div class="post-text">
+      			  <%= if item.image? 
+                image_tag item.image, class: "image"
+              end %>
+              <%= if item.video? 
+                video_tag item.video, class: "image", :controls => true
+              end %>
+              <br />
+              <%= item.content %>
+            </div>
+    			
+                <div class="post-buttons">
+                  <div class="btn-group">
+                		<% if item.url? %>
+                			<%= link_to item.url do %>
+                				<%= image_tag("icons/link-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
+                			<% end %>
+                		<% else %>
+                			<%= link_to "#" do %>
+                				<%= image_tag("icons/link-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
+                			<% end %>
+                		<% end %>
+                		<% if item.url? %>
+                			<%= link_to item.url do %>
+                				<%= image_tag("icons/globe-blue.png", width: 24, alt: "link", style: "margin-right: 18px; text-decoration: none;") %>
+                				<%= 1821 %>
+                			<% end %>
+                		<% else %>
+                			<%= link_to "#" do %>
+                				<%= image_tag("icons/globe-blue.png", width: 24, alt: "link", style: "margin-right: 18px; text-decoration: none;") %>
+                			<% end %>
+                		<% end %>
+              		</div>
+              		<div class="btn-group">
+              			<%= link_to item do %>
+              				<%= image_tag("icons/comments-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
+              				<span style="color: #00b8ac;"><%= item.comments.count %></span>
+              			<% end %>
+              			<%= link_to item do %>
+              				<%= image_tag("icons/dispute-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
+              				<%= 3 %>
+              			<% end %>
+              	  </div>
+              	
+                  <div class="btn-group pull-right">
+                    <%= link_to like_post_path(item), method: :put, class: "btn btn-default btn-xs" do %>
+                      <span class="glyphicon glyphicon-chevron-up"></span>
+                      <%= item.get_upvotes.size %>
+                    <% end %>
+                    <%= link_to dislike_post_path(item), method: :put, class: "btn btn-default btn-xs" do %>
+                      <span class="glyphicon glyphicon-chevron-down"></span>
+                      <%= item.get_downvotes.size %>
+                    <% end %>
+                    <%= link_to item, class: "btn btn-default btn-xs" do %>
+              				<span class="glyphicon glyphicon-retweet"></span>
+              				<%= 17 %>
+                		<% end %>
+                	</div>
+                </div>
+        	    </div>
+        		</div>
         </div>
       </div>
     </div>
-	<% end %> 
-
-<% @feed_items.each do |item| %>
-  <div class="main-content">
-  <div class="link row clearfix">
-    <div class="post-box">
-		<div class="row">
-	    <div class="col-md-2">
-	    	<%= link_to user_path(item.user) do
-		     	image_tag(item.user.avatar.url, width: 45, class: "img-circle pull-left")
-		  	end %>
-			</div>
-			
-			<div class="col-md-10-offset-2">
-			  <% if item.user == current_user %>
-        	<div class="btn-group pull-right">
-        	<%= link_to edit_post_path(item), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
-        		<span class="glyphicon glyphicon-cog"></span>
-        	<% end %>
-        	<%= link_to item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
-        		<span class="glyphicon glyphicon-trash"></span>
-        	<% end %>
-        	</div>
-        <% end %>
-		  	<h5 style="margin-top: 0px"><%= link_to item.title, item %><br> 
-		  	<small class="author"><%= link_to item.user.username, user_path(item.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.user.reputation %>
-         - <%= time_ago_in_words(item.created_at) %> ago in
-		  	<% item.tag_list.map.each do |tag| %>
-          <div class="tags">
-            <i><%= link_to tag, tag_path(tag) %></i>
-          </div>
-        <% end %></small></h5>
-        
-        <div class="post-text">
-  			  <%= if item.image? 
-            image_tag item.image, class: "image"
-          end %>
-          <%= if item.video? 
-            video_tag item.video, class: "image", :controls => true
-          end %>
-          <br />
-          <%= item.content %>
-        </div>
-			
-            <div class="post-buttons">
-              <div class="btn-group">
-            		<% if item.url? %>
-            			<%= link_to item.url do %>
-            				<%= image_tag("icons/link-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
-            			<% end %>
-            		<% else %>
-            			<%= link_to "#" do %>
-            				<%= image_tag("icons/link-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
-            			<% end %>
-            		<% end %>
-            		<% if item.url? %>
-            			<%= link_to item.url do %>
-            				<%= image_tag("icons/globe-blue.png", width: 24, alt: "link", style: "margin-right: 18px; text-decoration: none;") %>
-            				<%= 1821 %>
-            			<% end %>
-            		<% else %>
-            			<%= link_to "#" do %>
-            				<%= image_tag("icons/globe-blue.png", width: 24, alt: "link", style: "margin-right: 18px; text-decoration: none;") %>
-            			<% end %>
-            		<% end %>
-          		</div>
-          		<div class="btn-group">
-          			<%= link_to item do %>
-          				<%= image_tag("icons/comments-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
-          				<span style="color: #00b8ac;"><%= item.comments.count %></span>
-          			<% end %>
-          			<%= link_to item do %>
-          				<%= image_tag("icons/dispute-blue.png", width: 24, alt: "link", style: "text-decoration: none;") %>
-          				<%= 3 %>
-          			<% end %>
-          	  </div>
-          	
-              <div class="btn-group pull-right">
-                <%= link_to like_post_path(item), method: :put, class: "btn btn-default btn-xs" do %>
-                  <span class="glyphicon glyphicon-chevron-up"></span>
-                  <%= item.get_upvotes.size %>
-                <% end %>
-                <%= link_to dislike_post_path(item), method: :put, class: "btn btn-default btn-xs" do %>
-                  <span class="glyphicon glyphicon-chevron-down"></span>
-                  <%= item.get_downvotes.size %>
-                <% end %>
-                <%= link_to item, class: "btn btn-default btn-xs" do %>
-          				<span class="glyphicon glyphicon-retweet"></span>
-          				<%= 17 %>
-            		<% end %>
-            	</div>
-            </div>
-    	    </div>
-    		</div>
-    </div>
+          
+    <% end %>
   </div>
 </div>
-      
-<% end %>
+
+<div class="user-right-column">
+  <% if user_signed_in?  %>
+    <div class="quick-post-box">
+      <div class="col-md-12">
+        <%= render "posts/quick_form" %>
+      </div>
+    </div>
+	<% end %> 
 </div>

@@ -1,79 +1,76 @@
 <% @comments.each do |comment| %>
   <div class="link row clearfix">
     <div class="comment-box">
-		<div class="row">
-	    <div class="col-md-2">
-	    	<%= link_to user_path(comment.user) do
-		     	image_tag(comment.user.avatar.url, width: 40, class: "img-circle pull-left")
-		  	end %>
-			</div>
-      <div class="col-md-10-offset-2">
-        <div class="comment-text"><%= comment.content %></div>
-      </div>
-		</div>
-      
-    <div class="row">
-      <div class="col-md-2">
-        &nbsp;
-      </div>
-      <div class="col-md-10-offset-2">
-		  	<h5 style="margin-top: 0px">
-		  	  <small class="author"><%= link_to comment.user.username, user_path(comment.user) %> <span class="glyphicon glyphicon-star"></span> <%= comment.user.reputation %> 
-		  	    - <%= time_ago_in_words(comment.created_at) %> ago</small>
-		  	</h5>
-		  </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-md-2">
-        &nbsp;
-      </div>
-      
-      <div class="col-md-10-offset-2">
-      	<div class="btn-group">
-      			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
-      				<span class="glyphicon glyphicon-flash" style="color: #ededed;"></span>
-      				<%= 3 %>
-      			<% end %>
-      			<%= link_to like_post_comment_path(@post, comment), method: :put, class: "btn btn-default btn-xs" do %>
-              <span class="glyphicon glyphicon-chevron-up"></span>
-              <%= comment.get_upvotes.size %>
-            <% end %>
-            <%= link_to dislike_post_comment_path(@post, comment), method: :put, class: "btn btn-default btn-xs" do %>
-              <span class="glyphicon glyphicon-chevron-down"></span>
-              <%= comment.get_downvotes.size %>
-            <% end %>
-      	</div>
-        <% if comment.user == current_user %>
-        	<div class="btn-group pull-right" style="margin-right: 4%">
-          	<%= link_to edit_post_comment_path(@post, comment), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
-          		<span class="glyphicon glyphicon-cog"></span>
-          	<% end %>
-          	<%= link_to post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
-          		<span class="glyphicon glyphicon-trash"></span>
-          	<% end %>
-        	</div>
-        <% end %>
+  		
+  		<div class="row">
+  	    <div class="col-md-2">
+  	    	<%= link_to user_path(comment.user) do
+  		     	image_tag(comment.user.avatar.url, width: 40, class: "img-circle pull-left")
+  		  	end %>
+  			</div>
+        <div class="col-md-10-offset-2">
+          <div class="comment-text"><%= comment.content %></div>
         </div>
-      </div>
+  		</div>
       
-        <div class="row">
-          <div class="col-md-2">
-            &nbsp;
-          </div>
-          
-          <div class="col-md-10">
-            <br>
-              <% if comment.notations.any? %>
-                <%= render 'notations/notations', comment: comment %>
-              <% end %>
-              <div class="notation-reply">
-                <%= link_to "reply", new_post_comment_notation_path(@post, comment) %>
-              </div>
-    		  </div>
+      <div class="row">
+        <div class="col-md-2">
+          &nbsp;
+        </div>
+        <div class="col-md-10-offset-2">
+  		  	<h5 style="margin-top: 0px">
+  		  	  <small class="author"><%= link_to comment.user.username, user_path(comment.user) %> <span class="glyphicon glyphicon-star"></span> <%= comment.user.reputation %> 
+  		  	    - <%= time_ago_in_words(comment.created_at) %> ago</small>
+  		  	</h5>
+  		  </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-2">
+          &nbsp;
         </div>
         
+        <div class="col-md-10-offset-2">
+        	<div class="btn-group">
+        			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
+        				<span class="glyphicon glyphicon-flash" style="color: #ededed;"></span>
+        				<%= 3 %>
+        			<% end %>
+        			<%= link_to like_post_comment_path(@post, comment), method: :put, class: "btn btn-default btn-xs" do %>
+                <span class="glyphicon glyphicon-chevron-up"></span>
+                <%= comment.get_upvotes.size %>
+              <% end %>
+              <%= link_to dislike_post_comment_path(@post, comment), method: :put, class: "btn btn-default btn-xs" do %>
+                <span class="glyphicon glyphicon-chevron-down"></span>
+                <%= comment.get_downvotes.size %>
+              <% end %>
+        	</div>
+          <% if comment.user == current_user %>
+          	<div class="btn-group pull-right" style="margin-right: 4%">
+            	<%= link_to edit_post_comment_path(@post, comment), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+            		<span class="glyphicon glyphicon-cog"></span>
+            	<% end %>
+            	<%= link_to post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+            		<span class="glyphicon glyphicon-trash"></span>
+            	<% end %>
+          	</div>
+          <% end %>
+        </div>
       </div>
+      
+      <div class="row">
+        
+        <div class="col-md-10 col-md-offset-2">
+          <br>
+            <% if comment.notations.any? %>
+              <%= render 'notations/notations', comment: comment %>
+            <% end %>
+            <div class="notation-reply">
+              <%= link_to "reply", new_post_comment_notation_path(@post, comment) %>
+            </div>
+  		  </div>
+      </div>
+    
+    </div>
   </div>
-
 <% end %>

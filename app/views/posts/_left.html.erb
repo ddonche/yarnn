@@ -1,13 +1,11 @@
-<% if user_signed_in? %>
-  <div class="main-avatar">
-    <%= image_tag(current_user.avatar.url, width: 145, class: "img-circle" ) %>
+<div class="main-avatar">
+  <%= image_tag(@post.user.avatar.url, width: 145, class: "img-circle" ) %>
     <br />
-    <h4><%= current_user.username %></h4> 
-    <% if current_user.name? %>
-      <%= current_user.name %> <span class="glyphicon glyphicon-star"></span> <%= current_user.reputation %>
-    <% else %>
-      <%= "Mysterious Stranger" %> <span class="glyphicon glyphicon-star"></span> <%= current_user.reputation %>
-    <% end %>
-      <%= render 'shared/stats' %>
-  </div>
-<% end %>
+  <h4><%= @post.user.username %></h4> 
+  
+  <% if @post.user.name? %>
+    <%= @post.user.name %> <span class="glyphicon glyphicon-star"></span> <%= @post.user.reputation %>
+  <% else %>
+    <%= "Mysterious Stranger" %> <span class="glyphicon glyphicon-star"></span> <%= @post.user.reputation %>
+  <% end %>
+</div>

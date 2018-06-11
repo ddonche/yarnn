@@ -1,104 +1,25 @@
-<div id="content" class="col-md-6 col-md-offset-3">
-<div class="main-content">
-  <div class="link row clearfix">
-    <div class="post-box">
-      <div class="comment-box">
-  		<div class="row">
-  	    <div class="col-md-2">
-  	    	<%= link_to user_path(@post.user) do
-  		     	image_tag(@post.user.avatar.url, width: 45, class: "img-circle pull-left")
-  		  	end %>
-  			</div>
-  			
-  			<div class="col-md-10-offset-2">
-  		  	
-           <% if @post.user == current_user %>
-          	<div class="btn-group pull-right">
-          	<%= link_to edit_post_path(@post), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
-          		<span class="glyphicon glyphicon-cog"></span>
-          	<% end %>
-          	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
-          		<span class="glyphicon glyphicon-trash"></span>
-          	<% end %>
-          	</div>
-          <% end %>
-  		  	<h5 style="margin-top: 0px"><%= link_to @post.title, @post %><br> 
-  		  	<small class="author"><%= link_to @post.user.username, user_path(@post.user) %> <span class="glyphicon glyphicon-star"></span> <%= @post.user.reputation %> 
-  		  	  - <%= time_ago_in_words(@post.created_at) %> ago in
-  		  	<% @post.tag_list.map.each do |tag| %>
-            <div class="tags">
-              <i><%= link_to tag, tag_path(tag) %></i>
-            </div>
-          <% end %></small></h5>
-          
-            <div class="post-text">
-      			  <%= if @post.image? 
-                image_tag @post.image, class: "image"
-              end %>
-              <%= if @post.video? 
-                video_tag @post.video, class: "image", :controls => true
-              end %>
-              <br />
-              <%= @post.content %>
-            <% if @post.user.signature? %>
-              <div class="signature"><%= @post.user.signature %></div>
-            <% end %>
-          </div>
-          
-            <div class="post-buttons">
-              <div class="btn-group">
-            		<% if @post.url? %>
-            			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
-            				<span class="glyphicon glyphicon-link" style="color: #ededed;"></span>
-            			<% end %>
-            		<% else %>
-            			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
-            				<span class="glyphicon glyphicon-link"></span>
-            			<% end %>
-            		<% end %>
-            		<% if @post.url? %>
-            			<%= link_to @post.url, class: "btn btn-primary btn-xs" do %>
-            				<span class="glyphicon glyphicon-globe" style="color: #ededed;"></span>
-            				<%= 1821 %>
-            			<% end %>
-            		<% else %>
-            			<%= link_to "#", class: "btn btn-default btn-xs", style: "color: #ccc;" do %>
-            				<span class="glyphicon glyphicon-globe"></span>
-            			<% end %>
-            		<% end %>
-          		</div>
-          		<div class="btn-group">
-          			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
-          				<span class="glyphicon glyphicon-comment" style="color: #ededed;"></span>
-          				<span style="color: #ededed;"><%= @post.comments.count %></span>
-          			<% end %>
-          			<%= link_to @post, class: "btn btn-primary btn-xs" do %>
-          				<span class="glyphicon glyphicon-flash" style="color: #ededed;"></span>
-          				<%= 3 %>
-          			<% end %>
-          	  </div>
-          	
-              <div class="btn-group pull-right">
-                <%= link_to like_post_path(@post), method: :put, class: "btn btn-default btn-xs" do %>
-                  <span class="glyphicon glyphicon-chevron-up"></span>
-                  <%= @post.get_upvotes.size %>
-                <% end %>
-                <%= link_to dislike_post_path(@post), method: :put, class: "btn btn-default btn-xs" do %>
-                  <span class="glyphicon glyphicon-chevron-down"></span>
-                  <%= @post.get_downvotes.size %>
-                <% end %>
-                <%= link_to @post, class: "btn btn-default btn-xs" do %>
-          				<span class="glyphicon glyphicon-retweet"></span>
-          				<%= 17 %>
-            		<% end %>
-            	</div>
-            </div>
-    	    </div>
-    		</div>
-        
-      </div>
-    </div>
+<div class="user-left-column">
+  <%= render 'posts/left' %>
 </div>
 
-<%= render 'comments' %>
+<div class="user-mid-column">
+  <div id="content" class="col-md-12">
+    <%= render 'showpost' %>
+    <%= render 'comments' %>
+  </div>
 </div>
+
+<div class="user-right-column">
+  <div class="quick-post-box">
+      <div class="col-sm-12">
+        <% if user_signed_in? %>
+          <%= render "comments/form" %><br/>
+        <% else %>
+          <div class="small" style="color: #fc0000;"><em><strong>You must be logged in to comment.</strong></em></div>
+        <% end %>
+      </div>
+  </div>
+</div>
+
+
+
