@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   
   mount_uploader :image, ImageUploader
   mount_uploader :video, VideoUploader
+  mount_uploader :audio, AudioUploader
+  require 'streamio-ffmpeg'
 
   acts_as_taggable
   ActsAsTaggableOn.force_lowercase = true

@@ -263,6 +263,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  streamio-ffmpeg (~> 3.0, >= 3.0.2)
   strip_attributes
   turbolinks (~> 5)
   tzinfo-data
