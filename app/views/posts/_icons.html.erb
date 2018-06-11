@@ -1,20 +1,51 @@
-  <div class="form-group">
-    <%= f.label :image %> 
-    <%=  f.file_field :image, class: "form-control" %>
-  </div>
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, class: "form-control", :autofocus => true, placeholder: "You can Quick Post by just filling out this section.", rows: 3 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control", :autofocus => true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :url %><br>
+    <%= f.text_field :url, class: "form-control", :autofocus => true %>
+  </div>
+  <br>
   <div class="form-group">
     <%= f.label :tag_list %><i> Add up to three category names. *Separate categories with commas. Example: 
     "movies, horror movies, Nightmare on Elm Street"</i>
-    <%= f.text_field :tag_list, class: "form-control", value: @post.tag_list.join(", ")   %>
+    <%= f.text_field :tag_list, class: "form-control", :autofocus => true, value: @post.tag_list.join(", ")   %>
   </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :image %> 
+    <%=  f.file_field :image, class: "form-control", :autofocus => true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :video %> 
+    <%=  f.file_field :video, class: "form-control", :autofocus => true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :audio %> 
+    <%=  f.file_field :audio, class: "form-control", :autofocus => true %>
+  </div>
+  <br>
   
-    <%= link_to "#" do %>
-  		<span class="glyphicon glyphicon-picture" style="color: #00b8ac; margin-right: 6px;"></span>
-  	<% end %>
-  	<%= link_to "#" do %>
-  		<span class="glyphicon glyphicon-music" style="color: #00b8ac; margin-right: 6px;"></span>
-  	<% end %>
-  	<%= link_to "#" do %>
-  		<span class="glyphicon glyphicon-film" style="color: #00b8ac;"></span>
-  	<% end %>
+  <%= image_submit_tag("icons/submit.png", width: 24, class: "pull-right") %>
+
+<% end %>

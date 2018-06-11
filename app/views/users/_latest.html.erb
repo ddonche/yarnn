@@ -34,6 +34,9 @@
               <%= if post.video? 
                 video_tag post.video, class: "image", :controls => true
               end %>
+              <%= if post.audio? 
+                audio_tag post.audio, class: "audio", :controls => true
+              end %>
               <br />
               <%= post.content %>
             </div>
