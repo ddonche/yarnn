@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   strip_attributes
+  enum type: { standard: 0, serious: 1, personal: 2, opinion: 3 }
 
   validates :content, presence: true, length: { minimum: 3, maximum: 400 }
   

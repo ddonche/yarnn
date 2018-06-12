@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   def show
     @page_title = @user.username
     @posts = @user.posts.order('created_at DESC')
+    @users = @user.followers
+    @followed_users = @user.following
   end
   
   def following

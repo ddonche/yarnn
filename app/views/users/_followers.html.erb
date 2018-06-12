@@ -1,0 +1,17 @@
+<div class="side-box">
+  <div class="side-content">
+    <div class="center">
+      <p><b>Followers</b></p>
+    </div>
+ <% if @users.any? %>
+    <div class="user_avatars">
+      <% @users.each do |user| %>
+        <%= link_to user do %>
+        <%= image_tag(user.avatar.url, width: 25, class: "img-circle", title: user.username) %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+      
+  </div>
+</div>
