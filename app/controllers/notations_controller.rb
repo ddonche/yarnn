@@ -15,6 +15,9 @@ class NotationsController < ApplicationController
     @notation = @comment.notations.new(notation_params) 
     @notation.user_id = current_user.id if current_user
     if @notation.save
+      Notification.create!(post_id: @post.id, comment_id: @comment.id, 
+                                notation_id: @notation.id, recipient_id: @comment.user_id, 
+                                notified_by_id: current_user.id, notification_type: "notation")
       redirect_to @post
     else
       render :new

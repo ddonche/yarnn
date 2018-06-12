@@ -28,7 +28,11 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
 
-  #root 'home#index'
+  resources :notifications do
+    member do
+      get :toggle_read
+    end
+  end
   
   authenticated do
     root :to => 'static_pages#home', as: :authenticated
