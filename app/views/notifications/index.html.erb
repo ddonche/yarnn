@@ -1,85 +1,97 @@
-<div class="user-left-column">
-  <div class="side-box">
-    <div class="side-content">
-      
-      <h5>Notifications</h5>
+<div id="content-wrap" style="width: 1080px;">
+  <div class="left-column" style="width: 80%;">
+    <div class="log-form">
+      <div class="title-box">Notifications</div>
     </div>
-  </div>
-</div>
-
-<div class="big-right-column" >
+    
   <% if @notifications.count > 21 %>
     <div class ="pagination-container">
       <%= paginate @notifications %>
     </div>
   <% end %>    
   
-        <div class="main-content">
-            <div class="post-box">
-    		      <div class="row">
-    			      <div class="col-md-12">
-                  <% if @notifications.any? %>
-                  <% @notifications.each do |notification| %>
-
-                  
-                  <% if notification.notification_type == "comment" %>
-                      <i class="glyphicon glyphicon-comment"></i>&nbsp;
-                      <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
-                      commented on your post <%= link_to Post.find(notification.post_id).title, post_path(notification.post_id) %>
-                       <%= time_ago_in_words(notification.created_at) %> ago
-                      <div style="float:right;">
-                        <%= link_to 'mark as read', toggle_read_notification_path(notification) %>
-                      </div>                  
-                  <% end %>
-                  
-                  <% if notification.notification_type == "notation" %>
-                      <i class="glyphicon glyphicon-comment"></i>&nbsp;
-                      <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
-                      replied to your comment on <%= link_to Post.find(notification.post_id).title, post_path(notification.post_id) %> 
-                      <%= time_ago_in_words(notification.created_at) %> ago
-                      <div style="float:right;">
-                        <%= link_to 'mark as read', toggle_read_notification_path(notification) %>
-                      </div>                 
-                  <% end %>
-                  
-                  
-                  <% if notification.notification_type == "message" %>
-                      <i class="glyphicon glyphicon-envelope"></i>&nbsp;
-                      <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
-                      sent you a private 
-                      <%= link_to 'message', conversation_path(notification.conversation_id) %> <%= time_ago_in_words(notification.created_at) %> ago
-                      <div style="float:right;">
-                        <%= link_to 'mark as read', toggle_read_notification_path(notification) %>
-                      </div>                  
-                  <% end %>
-                  
-                  <% if notification.notification_type == "follow" %>
-                      <i class="glyphicon glyphicon-heart"></i>&nbsp;
-                      <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
-                      started following you <%= time_ago_in_words(notification.created_at) %> ago
-                      <div style="float:right;">
-                        <%= link_to 'mark as read', toggle_read_notification_path(notification) %>
-                      </div>
-                  <% end %>
-                  
-                  <% if notification.notification_type == "unfollow" %>
-                      <i class="glyphicon glyphicon-heart-empty"></i>&nbsp;
-                      <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
-                      quit following you <%= time_ago_in_words(notification.created_at) %> ago
-                      <div style="float:right;">
-                        <%= link_to 'mark as read', toggle_read_notification_path(notification) %>
-                      </div>
-                  <% end %>
-                  
+    <div class ="log-form">
+      <% if @notifications.any? %>
+        <% @notifications.each do |notification| %>
+            <div class="table">
+              <div class="table-row">
+                <div class="table-cell" style="width: 10%;">
+                  <%= image_tag User.find(notification.notified_by).avatar.url, width: 40, class: "img-circle" %>  
                 </div>
-
+                
+                <% if notification.notification_type == "comment" %>
+                  <div class="table-cell" style="width: 78%;">
+                    <i class="glyphicon glyphicon-comment"></i>&nbsp;
+                    <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+                    commented on your post <%= link_to Post.find(notification.post_id).title, post_path(notification.post_id) %>
+                    <br />
+                    <div class="small">
+                      <%= time_ago_in_words(notification.created_at) %> ago
+                    </div>                  
+                  </div>
                 <% end %>
-                <% else %>
-                  You have no notifications.
+                
+                <% if notification.notification_type == "notation" %>
+                  <div class="table-cell" style="width: 78%;">
+                    <i class="glyphicon glyphicon-comment"></i>&nbsp;
+                    <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+                    replied to your comment on the post <%= link_to Post.find(notification.post_id).title, post_path(notification.post_id) %>
+                    <br />
+                    <div class="small">
+                      <%= time_ago_in_words(notification.created_at) %> ago
+                    </div>                  
+                  </div>
                 <% end %>
+                
+                <% if notification.notification_type == "message" %>
+                  <div class="table-cell" style="width: 78%;">
+                    <i class="glyphicon glyphicon-envelope"></i>&nbsp;
+                    <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+                    sent you a private 
+                    <%= link_to 'message', conversation_path(notification.conversation_id) %> 
+                    <br />
+                    <div class="small">
+                      <%= time_ago_in_words(notification.created_at) %> ago
+                    </div>
+                  </div>
+                <% end %>
+                
+                <% if notification.notification_type == "follow" %>
+                  <div class="table-cell" style="width: 78%;">
+                    <i class="glyphicon glyphicon-heart"></i>&nbsp;
+                    <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+                    started following you 
+                    <br />
+                    <div class="small">
+                      <%= time_ago_in_words(notification.created_at) %> ago
+                    </div>
+                  </div>
+                <% end %>
+                
+                <% if notification.notification_type == "unfollow" %>
+                  <div class="table-cell" style="width: 78%;">
+                    <i class="glyphicon glyphicon-heart-empty"></i>&nbsp;
+                    <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+                    quit following you 
+                    <br />
+                    <div class="small">
+                      <%= time_ago_in_words(notification.created_at) %> ago
+                    </div>
+                  </div>
+                <% end %>
+                
+                <div class="table-cell" style="width: 12%;">
+                  <div class="small">
+                    <%= link_to 'mark as read', toggle_read_notification_path(notification) %>
+                  </div>
+                </div>
+                
               </div>
             </div>
-      </div>   
-
+        <% end %>
+      <% else %>
+      You have no notifications.
+      <% end %>
+    </div>
+  </div>
 </div>
-  
