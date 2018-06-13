@@ -1,0 +1,121 @@
+.log-form{
+    font: 95% Robot, sans-serif;
+    max-width: 700px;
+    margin: 10px auto;
+    padding: 16px;
+    background: #F7F7F7;
+}
+
+.log-form-right {
+    font: 95% Robot, sans-serif;
+    max-width: 500px;
+    float: right;
+    margin: 10px auto;
+    padding: 16px;
+    background: #F7F7F7;
+}
+
+.log-form-left {
+    font: 95% Robot, sans-serif;
+    max-width: 500px;
+    float:left;
+    margin: 10px auto;
+    padding: 16px;
+    background: #F7F7F7;
+}
+
+.log-form h1{
+    background: #43D1AF;
+    padding: 20px 0;
+    font-size: 140%;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    margin: -16px -16px 16px -16px;
+}
+.log-form input[type="text"],
+.log-form input[type="date"],
+.log-form input[type="datetime"],
+.log-form input[type="email"],
+.log-form input[type="number"],
+.log-form input[type="password"],
+.log-form input[type="search"],
+.log-form input[type="time"],
+.log-form input[type="url"],
+.log-form textarea,
+.log-form select 
+{
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 6px;
+    border: 1px solid #ccc;
+    padding: 6px;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;
+}
+.log-form input[type="text"]:focus,
+.log-form input[type="date"]:focus,
+.log-form input[type="datetime"]:focus,
+.log-form input[type="email"]:focus,
+.log-form input[type="number"]:focus,
+.log-form input[type="password"]:focus,
+.log-form input[type="search"]:focus,
+.log-form input[type="time"]:focus,
+.log-form input[type="url"]:focus,
+.log-form textarea:focus,
+.log-form select:focus
+{
+    box-shadow: 0 0 5px #00b8ac;
+    padding: 6px;
+    border: 1px solid #00b8ac;
+}
+
+.log-form input[type="submit"],
+.log-form input[type="button"]{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 8px 16px;
+    background: #d20001;
+    border-bottom: 2px solid #810101;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;    
+    color: #fff;
+}
+    
+.log-form input[type="submit"]:hover,
+.log-form input[type="button"]:hover{
+    background: #2EBC99;
+}
+
+fieldset {
+  padding: 3em;
+  margin: 0 0 30px 0;
+  font-size: .9em;
+  border:1px solid #e5e5e5;
+}
+
+input[type="submit"], input[type="button"]{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    min-width: 80px;
+    padding: 8px 16px;
+    background: #d20001;
+    border-bottom: 2px solid #810101;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;    
+    color: #fff;
+    font-family: 'Fjalla One', sans-serif;
+}

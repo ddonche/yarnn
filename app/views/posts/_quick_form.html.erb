@@ -1,30 +1,29 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.text_area :content, class: "form-control", placeholder: "Quick Post", rows: 3 %>
-  </div>
+<div class="log-form">
+  <%= form_for(@post) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
   
-  <% if false %>
-    <%= link_to "#", id: "post-icons", :remote => true do %>
-      <%= image_tag("icons/camera.png", width: 24, alt: "camera", style: "margin-right: 9px;") %>
-      <%= image_tag("icons/microphone.png", width: 24, alt: "microphone", style: "margin-right: 9px;") %>
-      <%= image_tag("icons/film.png", width: 24, alt: "film", style: "margin-right: 9px;") %>
-      <%= image_tag("icons/categories.png", width: 24, alt: "categories", style: "margin-right: 9px;") %>
-      <%= image_tag("icons/link.png", width: 24, alt: "link") %>
+        <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
+  
+      <%= f.text_area :content, class: "form-control", placeholder: "Quick Post", rows: 3 %>
+    
+    <% if false %>
+      <%= link_to "#", id: "post-icons", :remote => true do %>
+        <%= image_tag("icons/camera.png", width: 24, alt: "camera", style: "margin-right: 9px;") %>
+        <%= image_tag("icons/microphone.png", width: 24, alt: "microphone", style: "margin-right: 9px;") %>
+        <%= image_tag("icons/film.png", width: 24, alt: "film", style: "margin-right: 9px;") %>
+        <%= image_tag("icons/categories.png", width: 24, alt: "categories", style: "margin-right: 9px;") %>
+        <%= image_tag("icons/link.png", width: 24, alt: "link") %>
+      <% end %>
+    <% end %>
+      <%= image_submit_tag("icons/submit.png", width: 24, class: "pull-right") %>
+    <br />
   <% end %>
-    <%= image_submit_tag("icons/submit.png", width: 24, class: "pull-right") %>
-
-<% end %>
-
+</div>

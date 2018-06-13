@@ -109,10 +109,8 @@
 
 <div class="user-right-column">
   <% if user_signed_in?  %>
-    <div class="quick-post-box">
-      <div class="col-md-12">
-        <%= render "posts/quick_form" %>
-      </div>
+    <div class="log-box">
+      <%= render "posts/quick_form" %>
     </div>
 	<% end %> 
 </div>
