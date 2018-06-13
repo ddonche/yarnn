@@ -21,6 +21,15 @@
 		     	              image_tag(current_user.avatar.url, width: 20, class: "img-circle")
 		  	               end %>
 		  	          </li>
+		  	          <li>
+		  	            <%= link_to notifications_path do %>
+              		  <% if @notifications.any? %>
+              		    <i class="glyphicon glyphicon-inbox" style="color: #00b8ac"></i>
+              		  <% else %>
+              		    <i class="glyphicon glyphicon-inbox"></i>
+              		  <% end %>&nbsp;<%= @notifications.count %>
+              		  <% end %>
+              		</li>
     							<li><%= link_to 'Account', edit_user_registration_path %></li>
     							<li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
     							<li><%= link_to 'Ipsum', ipsum_path, method: :put %></li>
