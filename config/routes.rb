@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :sharings,      only: [:create, :destroy]
+  
   authenticated do
     root :to => 'static_pages#home', as: :authenticated
   end

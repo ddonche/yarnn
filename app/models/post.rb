@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :sharings, dependent: :destroy
+  has_many :sharers, :through => :sharings, :source => :user
+  
   strip_attributes
   enum type: { standard: 0, serious: 1, personal: 2, opinion: 3 }
 
