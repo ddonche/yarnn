@@ -10,15 +10,11 @@
 </div>
 
 <div class="user-right-column">
-  <div class="quick-post-box">
-      <div class="col-sm-12">
-        <% if user_signed_in? %>
-          <%= render "comments/form" %><br/>
-        <% else %>
-          <div class="small" style="color: #fc0000;"><em><strong>You must be logged in to comment.</strong></em></div>
-        <% end %>
-      </div>
-  </div>
+  <% if user_signed_in? %>
+    <%= render "comments/form" %><br/>
+  <% else %>
+    <div class="small" style="color: #fc0000;"><em><strong>You must be logged in to comment.</strong></em></div>
+  <% end %>
 </div>
 
 

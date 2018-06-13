@@ -1,7 +1,6 @@
 .log-form{
     font: 95% Robot, sans-serif;
     max-width: 700px;
-    margin: 10px auto;
     padding: 16px;
     background: #F7F7F7;
 }
@@ -85,8 +84,8 @@
     -moz-box-sizing: border-box;
     width: 100%;
     padding: 8px 16px;
-    background: #d20001;
-    border-bottom: 2px solid #810101;
+    background: #c91111;
+    border-bottom: 2px solid #00b8ac;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;    
@@ -95,7 +94,7 @@
     
 .log-form input[type="submit"]:hover,
 .log-form input[type="button"]:hover{
-    background: #2EBC99;
+    background: #00b8ac;
 }
 
 fieldset {
@@ -111,8 +110,8 @@ input[type="submit"], input[type="button"]{
     -moz-box-sizing: border-box;
     min-width: 80px;
     padding: 8px 16px;
-    background: #d20001;
-    border-bottom: 2px solid #810101;
+    background: #c91111;
+    border-bottom: 2px solid #00b8ac;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;    

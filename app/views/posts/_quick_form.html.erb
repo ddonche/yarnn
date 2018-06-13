@@ -12,7 +12,7 @@
       </div>
     <% end %>
   
-      <%= f.text_area :content, class: "form-control", placeholder: "Quick Post", rows: 3 %>
+      <%= f.text_area :content, placeholder: "Quick Post", rows: 3 %>
     
     <% if false %>
       <%= link_to "#", id: "post-icons", :remote => true do %>
@@ -23,7 +23,9 @@
         <%= image_tag("icons/link.png", width: 24, alt: "link") %>
       <% end %>
     <% end %>
-      <%= image_submit_tag("icons/submit.png", width: 24, class: "pull-right") %>
+    
     <br />
+    <%= f.submit "Submit" %>
+    
   <% end %>
 </div>

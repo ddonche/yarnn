@@ -1,3 +1,4 @@
+<div class="log-form">
 <%= form_for [@post, @comment] do |f| %>
   <% if @comment.errors.any? %>
       <div class="error_messages">
@@ -10,14 +11,9 @@
       </div>
     <% end %>
     
-    <div class="form-group">
-      <%= f.text_area :content, class: "form-control", rows: 3, placeholder: "what do you think about this?" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.submit "Comment", class: "btn btn-sm btn-primary pull-right" %>
-    </div>
-  
-<% end %>
+    <%= f.text_area :content, rows: 3, placeholder: "what do you think about this?" %>
+    <br />
+    <%= f.submit "Comment" %>
 
-  
+<% end %>
+</div>
