@@ -9,10 +9,10 @@
   		  	
             <% if @post.user == current_user %>
             	<div class="btn-group pull-right">
-              	<%= link_to edit_post_path(@post), class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+              	<%= link_to edit_post_path(@post), class: "btn btn-xs", style: "color: #039087;" do %>
               		<span class="glyphicon glyphicon-cog"></span>
               	<% end %>
-              	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs", style: "color: #039087;" do %>
+              	<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs", style: "color: #039087;" do %>
               		<span class="glyphicon glyphicon-trash"></span>
               	<% end %>
             	</div>
