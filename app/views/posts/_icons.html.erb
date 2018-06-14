@@ -11,41 +11,28 @@
     </div>
   <% end %>
   
-  <div class="form-group">
-    <%= f.label :content %><br>
-    <%= f.text_area :content, class: "form-control", :autofocus => true, placeholder: "You can Quick Post by just filling out this section.", rows: 3 %>
-  </div>
-
-  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title, class: "form-control", :autofocus => true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :url %><br>
-    <%= f.text_field :url, class: "form-control", :autofocus => true %>
-  </div>
+    <%= f.text_field :title, :autofocus => true %>
   <br>
-  <div class="form-group">
+   
+    <%= f.label :url %><br>
+    <%= f.text_field :url, :autofocus => true %>
+  <br>
+
     <%= f.label :tag_list %><i> Add up to three category names. *Separate categories with commas. Example: 
     "movies, horror movies, Nightmare on Elm Street"</i>
-    <%= f.text_field :tag_list, class: "form-control", :autofocus => true, value: @post.tag_list.join(", ")   %>
-  </div>
+    <%= f.text_field :tag_list, :autofocus => true, value: @post.tag_list.join(", ")   %>
+
   <br>
-  <div class="form-group">
+
     <%= f.label :image %> 
-    <%=  f.file_field :image, class: "form-control", :autofocus => true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :video %> 
-    <%=  f.file_field :video, class: "form-control", :autofocus => true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :audio %> 
-    <%=  f.file_field :audio, class: "form-control", :autofocus => true %>
-  </div>
+    <%=  f.file_field :image, :autofocus => true %>
   <br>
-  
-  <%= image_submit_tag("icons/submit.png", width: 24, class: "pull-right") %>
+    <%= f.label :video %> 
+    <%=  f.file_field :video, :autofocus => true %>
+  <br>
+    <%= f.label :audio %> 
+    <%=  f.file_field :audio, :autofocus => true %>
+  <br>
 
 <% end %>

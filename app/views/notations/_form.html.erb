@@ -1,3 +1,4 @@
+<div class="log-form">
 <%= form_for [@post, @comment, @notation] do |f| %>
   <% if @notation.errors.any? %>
       <div class="error_messages">
@@ -10,11 +11,14 @@
       </div>
     <% end %>
     
-    <div class="form-group">
-      <%= f.text_area :content, class: "form-control", rows: 2, placeholder: "what is your response?" %>
-    </div>
+      <% if current_user.reputation < 75 %>
+        <%= f.text_area :content, placeholder: "what is your response? limit 160 characters", rows: 3, maxlength: 160 %>
+      <% else %>
+        <%= f.text_area :content, placeholder: "what is your response? limit 200 characters", rows: 3, maxlength: 200 %>
+      <% end %>
+      
+      <br />
     
-    <div class="form-group">
-      <%= f.submit "Reply", class: "btn btn-sm btn-primary pull-right" %>
-    </div>
+      <%= f.submit "Reply" %>
 <% end %>
+</div>

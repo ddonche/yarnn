@@ -11,7 +11,14 @@
       </div>
     <% end %>
     
-    <%= f.text_area :content, rows: 3, placeholder: "what do you think about this?" %>
+      <% if current_user.reputation < 150 %>
+        <%= f.text_area :content, placeholder: "what do you think about this? limit 200 characters", rows: 3, maxlength: 200 %>
+      <% else %>
+        <%= f.text_area :content, placeholder: "what do you think about this? limit 300 characters", rows: 3, maxlength: 300 %>
+      <% end %>
+      
+      <br />
+    
     <br />
     <%= f.submit "Comment" %>
 

@@ -1,3 +1,18 @@
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+   
+      var maxLength = 400;
+      $('textarea').keyup(function() {
+        var length = $(this).val().length;
+        var length = maxLength-length;
+        $('#chars').text(length);
+      });
+   
+    });
+  </script>
+<% end %>
+
 <div class="log-form">
   <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
@@ -11,9 +26,14 @@
         </ul>
       </div>
     <% end %>
-  
-      <%= f.text_area :content, placeholder: "Submit quick post; edit later to add title, url, image, etc.", rows: 3 %>
-    
+      <% if current_user.reputation < 250 %>
+        <%= f.text_area :content, placeholder: "quick post, limit 400 characters", rows: 3, maxlength: 400 %>
+      <% else %>
+        <%= f.text_area :content, placeholder: "quick post, limit 1000 characters", rows: 3, maxlength: 1000 %>
+      <% end %>
+      
+      <br />
+      
     <% if false %>
       <%= link_to "#", id: "post-icons", :remote => true do %>
         <%= image_tag("icons/camera.png", width: 24, alt: "camera", style: "margin-right: 9px;") %>
@@ -23,8 +43,7 @@
         <%= image_tag("icons/link.png", width: 24, alt: "link") %>
       <% end %>
     <% end %>
-    
-    <br />
+
     <%= f.submit "Submit" %>
     
   <% end %>
