@@ -75,6 +75,11 @@ class PostsController < ApplicationController
   def repost
     post = current_user.posts.create(post_id: @post.id, content: "Repost")
     if post.save
+      voltaire_plus(1, :reputation, @post.user_id)
+      @post.increment!(:share_count)
+      Notification.create!(post_id: @post.id, 
+                                recipient_id: @post.user_id, notified_by_id: current_user.id, 
+                                notification_type: "repost")
       respond_to do |format|
         format.html { redirect_to feed_url, notice: 'Repost was successful.' }
       end

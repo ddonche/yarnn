@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180614033303) do
+ActiveRecord::Schema.define(version: 20180614054129) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20180614033303) do
     t.string   "audio"
     t.integer  "kind",        default: 0
     t.integer  "post_id"
-    t.integer  "share_count"
+    t.integer  "share_count", default: 0
     t.index ["post_id"], name: "index_posts_on_post_id"
     t.index ["url"], name: "index_posts_on_url"
     t.index ["user_id"], name: "index_posts_on_user_id"

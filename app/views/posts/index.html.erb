@@ -20,32 +20,60 @@
         			<div class="col-md-10-offset-2">
         			  <% if post.user == current_user %>
                 	<div class="btn-group pull-right">
-                	<%= link_to edit_post_path(post), class: "btn btn-xs", style: "color: #039087;" do %>
-                		<span class="glyphicon glyphicon-cog"></span>
-                	<% end %>
+                  <% unless post.post_id? %>
+                  	<%= link_to edit_post_path(post), class: "btn btn-xs", style: "color: #039087;" do %>
+                  		<span class="glyphicon glyphicon-cog"></span>
+                  	<% end %>
+                  <% end %>
                 	<%= link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs", style: "color: #039087;" do %>
                 		<span class="glyphicon glyphicon-trash"></span>
                 	<% end %>
                 	</div>
                 <% end %>
-        		  	<h5 style="margin-top: 0px"><%= link_to post.title, post %><br> 
+                <h5 style="margin-top: 0px"><%= link_to post.title, post %><br> 
+        		  	<% if post.post_id? %>
+        		  	 <small class="author"><span class="glyphicon glyphicon-retweet"></span> Reposted by <%= link_to post.user.username, user_path(post.user) %> <span class="glyphicon glyphicon-star"></span> <%= post.user.reputation %>
+        		  	<% else %>
         		  	<small class="author"><%= link_to post.user.username, user_path(post.user) %> <span class="glyphicon glyphicon-star"></span> <%= post.user.reputation %>
+                <% end %> 
                  - <%= time_ago_in_words(post.created_at) %> ago in
-        		  	<% post.tag_list.map.each do |tag| %>
-                  <div class="tags">
-                    <i><%= link_to tag, tag_path(tag) %></i>
-                  </div>
-                <% end %></small></h5>
+          		  	<% post.tag_list.map.each do |tag| %>
+                    <div class="tags">
+                      <i><%= link_to tag, tag_path(tag) %></i>
+                    </div>
+                  <% end %>
+                <% if post.post_id? %>
+                  <br />Originally posted by <%= link_to post.post.user.username, user_path(post.post.user) %> <span class="glyphicon glyphicon-star"></span> <%= post.post.user.reputation %>
+                  - <%= time_ago_in_words(post.post.created_at) %> ago
+                <% end %>
+                </small></h5>
         
                 <div class="post-text">
-          			  <%= if post.image? 
-                    image_tag post.image, class: "image"
-                  end %>
-                  <%= if post.video? 
-                    video_tag post.video, class: "image", :controls => true
-                  end %>
-                  <br />
-                  <%= post.content %>
+                  <% if post.post_id? %>
+            			  <%= if post.post.image? 
+                      image_tag post.post.image, class: "image"
+                    end %>
+                    <%= if post.post.video? 
+                      video_tag post.post.video, class: "image", :controls => true
+                    end %>
+                    <%= if post.post.audio? 
+                      audio_tag post.post.audio, class: "audio", :controls => true
+                    end %>
+                    <br />
+                    <%= post.post.content %>
+                  <% else %>
+            			  <%= if post.image? 
+                      image_tag post.image, class: "image"
+                    end %>
+                    <%= if post.video? 
+                      video_tag post.video, class: "image", :controls => true
+                    end %>
+                    <%= if post.audio? 
+                      audio_tag post.audio, class: "audio", :controls => true
+                    end %>
+                    <br />
+                    <%= post.content %>
+                  <% end %>
                 </div>
                 
                 <div class="post-buttons">
@@ -90,10 +118,17 @@
                       <span class="glyphicon glyphicon-chevron-down"></span>
                       <%= post.get_downvotes.size %>
                     <% end %>
-                    <%= link_to post, class: "btn btn-default btn-xs" do %>
-              				<span class="glyphicon glyphicon-retweet"></span>
-              				<%= 17 %>
-                		<% end %>
+                    <% if post.post_id? %>
+                    <%= link_to repost_post_path(post.post), method: :post, class: "btn btn-default btn-xs" do %>
+                				<span class="glyphicon glyphicon-retweet"></span>
+                				<%= post.post.share_count %>
+                  		<% end %>
+                    <% else %>
+                      <%= link_to repost_post_path(post), method: :post, class: "btn btn-default btn-xs" do %>
+                				<span class="glyphicon glyphicon-retweet"></span>
+                				<%= post.share_count %>
+                  		<% end %>
+                		<% end %>        
                 	</div>
                 </div>
             	 </div>
