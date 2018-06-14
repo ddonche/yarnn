@@ -28,7 +28,7 @@
             <% end %>
     		  	<h5 style="margin-top: 0px"><%= link_to item.title, item %><br> 
     		  	<% if item.post_id? %>
-    		  	 <small class="author">Reposted by <%= link_to item.user.username, user_path(item.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.user.reputation %>
+    		  	 <small class="author"><span class="glyphicon glyphicon-retweet"></span> Reposted by <%= link_to item.user.username, user_path(item.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.user.reputation %>
     		  	<% else %>
     		  	<small class="author"><%= link_to item.user.username, user_path(item.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.user.reputation %>
             <% end %> 
@@ -114,9 +114,16 @@
                       <span class="glyphicon glyphicon-chevron-down"></span>
                       <%= item.get_downvotes.size %>
                     <% end %>
-                    <%= link_to repost_post_path(item), method: :post, class: "btn btn-default btn-xs" do %>
-              				<span class="glyphicon glyphicon-retweet"></span>
-              				<%= 17 %>
+                    <% if item.post_id? %>
+                    <%= link_to repost_post_path(item.post), method: :post, class: "btn btn-default btn-xs" do %>
+                				<span class="glyphicon glyphicon-retweet"></span>
+                				<%= 17 %>
+                  		<% end %>
+                    <% else %>
+                      <%= link_to repost_post_path(item), method: :post, class: "btn btn-default btn-xs" do %>
+                				<span class="glyphicon glyphicon-retweet"></span>
+                				<%= 17 %>
+                  		<% end %>
                 		<% end %>
                 	</div>
                 </div>
