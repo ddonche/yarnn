@@ -41,7 +41,8 @@
                 </div>
               <% end %>
             <% if item.post_id? %>
-              <br />Originally posted by <%= link_to item.post.user.username, user_path(item.post.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.post.user.reputation %>
+              <br />Originally <%= link_to "posted", post_path(item.post) %> by <%= link_to item.post.user.username, user_path(item.post.user) %> 
+              <span class="glyphicon glyphicon-star"></span> <%= item.post.user.reputation %>
               - <%= time_ago_in_words(item.post.created_at) %> ago
             <% end %>
             </small></h5>

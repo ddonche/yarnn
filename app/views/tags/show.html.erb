@@ -89,10 +89,17 @@
                   <span class="glyphicon glyphicon-chevron-down"></span>
                   <%= post.get_downvotes.size %>
                 <% end %>
-                <%= link_to post, class: "btn btn-default btn-xs" do %>
-          				<span class="glyphicon glyphicon-retweet"></span>
-          				<%= 17 %>
-            		<% end %>
+                <% if post.post_id? %>
+                <%= link_to repost_post_path(post.post), method: :post, class: "btn btn-default btn-xs" do %>
+            				<span class="glyphicon glyphicon-retweet"></span>
+            				<%= post.post.share_count %>
+              		<% end %>
+                <% else %>
+                  <%= link_to repost_post_path(post), method: :post, class: "btn btn-default btn-xs" do %>
+            				<span class="glyphicon glyphicon-retweet"></span>
+            				<%= post.share_count %>
+              		<% end %>
+            		<% end %>       
             	</div>
             </div>
     	    </div>
