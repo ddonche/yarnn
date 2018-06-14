@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :repost]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -72,6 +72,17 @@ class PostsController < ApplicationController
     end
   end
   
+  def repost
+    post = current_user.posts.create(post_id: @post.id, content: "Repost")
+    if post.save
+      respond_to do |format|
+        format.html { redirect_to feed_url, notice: 'Repost was successful.' }
+      end
+    else
+      redirect_to :back, alert: "Unable to repost."
+    end
+  end
+  
   def upvote
     if @post.user != current_user
       @post.upvote_by current_user
@@ -105,6 +116,6 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :url, :content, :user_id, :tag_list, 
-                                    :image, :video, :audio, :type)
+                                    :image, :video, :audio, :type, :post_id)
     end
 end

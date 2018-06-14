@@ -1,8 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :sharings, dependent: :destroy
-  has_many :sharers, :through => :sharings, :source => :user
+  belongs_to :post, optional: :true
   
   strip_attributes
   enum type: { standard: 0, serious: 1, personal: 2, opinion: 3 }
@@ -13,6 +12,14 @@ class Post < ApplicationRecord
   mount_uploader :video, VideoUploader
   mount_uploader :audio, AudioUploader
   require 'streamio-ffmpeg'
+  
+  def post_type
+    if post_id?
+      "repost"
+    else
+      "post"
+    end
+  end
 
   acts_as_taggable
   ActsAsTaggableOn.force_lowercase = true

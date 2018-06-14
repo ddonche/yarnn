@@ -27,26 +27,49 @@
             	</div>
             <% end %>
     		  	<h5 style="margin-top: 0px"><%= link_to item.title, item %><br> 
+    		  	<% if item.post_id? %>
+    		  	 <small class="author">Reposted by <%= link_to item.user.username, user_path(item.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.user.reputation %>
+    		  	<% else %>
     		  	<small class="author"><%= link_to item.user.username, user_path(item.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.user.reputation %>
+            <% end %> 
              - <%= time_ago_in_words(item.created_at) %> ago in
-    		  	<% item.tag_list.map.each do |tag| %>
-              <div class="tags">
-                <i><%= link_to tag, tag_path(tag) %></i>
-              </div>
-            <% end %></small></h5>
+      		  	<% item.tag_list.map.each do |tag| %>
+                <div class="tags">
+                  <i><%= link_to tag, tag_path(tag) %></i>
+                </div>
+              <% end %>
+            <% if item.post_id? %>
+              <br />Originally posted by <%= link_to item.post.user.username, user_path(item.post.user) %> <span class="glyphicon glyphicon-star"></span> <%= item.post.user.reputation %>
+              - <%= time_ago_in_words(item.post.created_at) %> ago
+            <% end %>
+            </small></h5>
             
             <div class="post-text">
-      			  <%= if item.image? 
-                image_tag item.image, class: "image"
-              end %>
-              <%= if item.video? 
-                video_tag item.video, class: "image", :controls => true
-              end %>
-              <%= if item.audio? 
-                audio_tag item.audio, class: "audio", :controls => true
-              end %>
-              <br />
-              <%= item.content %>
+              <% if item.post_id? %>
+        			  <%= if item.post.image? 
+                  image_tag item.post.image, class: "image"
+                end %>
+                <%= if item.post.video? 
+                  video_tag item.post.video, class: "image", :controls => true
+                end %>
+                <%= if item.post.audio? 
+                  audio_tag item.post.audio, class: "audio", :controls => true
+                end %>
+                <br />
+                <%= item.post.content %>
+              <% else %>
+        			  <%= if item.image? 
+                  image_tag item.image, class: "image"
+                end %>
+                <%= if item.video? 
+                  video_tag item.video, class: "image", :controls => true
+                end %>
+                <%= if item.audio? 
+                  audio_tag item.audio, class: "audio", :controls => true
+                end %>
+                <br />
+                <%= item.content %>
+              <% end %>
             </div>
     			
                 <div class="post-buttons">
@@ -91,7 +114,7 @@
                       <span class="glyphicon glyphicon-chevron-down"></span>
                       <%= item.get_downvotes.size %>
                     <% end %>
-                    <%= link_to item, class: "btn btn-default btn-xs" do %>
+                    <%= link_to repost_post_path(item), method: :post, class: "btn btn-default btn-xs" do %>
               				<span class="glyphicon glyphicon-retweet"></span>
               				<%= 17 %>
                 		<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180613235705) do
+ActiveRecord::Schema.define(version: 20180614033303) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -75,9 +75,9 @@ ActiveRecord::Schema.define(version: 20180613235705) do
     t.string   "video"
     t.string   "audio"
     t.integer  "kind",        default: 0
-    t.integer  "parent_id"
+    t.integer  "post_id"
     t.integer  "share_count"
-    t.index ["parent_id"], name: "index_posts_on_parent_id"
+    t.index ["post_id"], name: "index_posts_on_post_id"
     t.index ["url"], name: "index_posts_on_url"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -90,16 +90,6 @@ ActiveRecord::Schema.define(version: 20180613235705) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
-  end
-
-  create_table "sharings", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id", "user_id"], name: "index_sharings_on_post_id_and_user_id", unique: true
-    t.index ["post_id"], name: "index_sharings_on_post_id"
-    t.index ["user_id"], name: "index_sharings_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
