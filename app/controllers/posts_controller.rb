@@ -66,6 +66,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    if @post.post_id?
+      unless current_user.id == @post.post.user_id
+        voltaire_minus(1, :reputation, @post.post.user_id)
+      end
+      @post.post.decrement!(:share_count)
+    end
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully deleted.' }
       format.json { head :no_content }
@@ -75,11 +81,14 @@ class PostsController < ApplicationController
   def repost
     post = current_user.posts.create(post_id: @post.id, content: "Repost")
     if post.save
-      voltaire_plus(1, :reputation, @post.user_id)
-      @post.increment!(:share_count)
+      unless current_user.id == @post.user_id
+        voltaire_plus(1, :reputation, @post.user_id)
+      
       Notification.create!(post_id: @post.id, 
                                 recipient_id: @post.user_id, notified_by_id: current_user.id, 
                                 notification_type: "repost")
+      end
+      @post.increment!(:share_count)
       respond_to do |format|
         format.html { redirect_to feed_url, notice: 'Repost was successful.' }
       end

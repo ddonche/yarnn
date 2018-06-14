@@ -14,9 +14,11 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(allowed_params) 
     @comment.user_id = current_user.id if current_user
     if @comment.save
+      unless current_user.id == @post.user_id
       Notification.create!(post_id: @post.id, comment_id: @comment.id, 
                                 recipient_id: @post.user_id, notified_by_id: current_user.id, 
                                 notification_type: "comment")
+      end
       redirect_to @post, notice: "Comment created."
     else
       render :new
