@@ -72,7 +72,7 @@ class WordsController < ApplicationController
       "Abraxo", "Bethesda", "Boston Bugle", "Brotherhood of Steel", "Butch", "Caesar's Legion", "Children of Atom", "Dave", 
       "Diamond City", "Dukov", "Enclave",
       "Fawkes", "Gary", "Gwinnett", "Lone Wanderer", "Megaton", "Minutemen", "Mr. Handy", "Mysterious Stranger", "New Vegas", 
-      "Novak", "Nuka-Cola", "Primm", "Regulators", "Sugar Bombs", "Talon Company", "The Institute", "Three Dog",
+      "Novak", "Nuka-Cola", "Primm", "Regulators", "Sugar Bombs", "Sheriff Simms", "Talon Company", "The Institute", "Three Dog",
       "Tunnel Snakes", "Van Buren", "Vault 101", "Vault-TEC"
       ]
       

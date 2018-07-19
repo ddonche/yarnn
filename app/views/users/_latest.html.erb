@@ -21,7 +21,7 @@
             	<% end %>
             	</div>
             <% end %>
-    		    <h5 style="margin-top: 0px"><%= link_to post.title, post %><br> 
+    		    <h5 style="margin-top: 0px">
     		  	<% if post.post_id? %>
     		  	 <small class="author"><span class="glyphicon glyphicon-retweet"></span> Reposted by <%= link_to post.user.username, user_path(post.user) %> <span class="glyphicon glyphicon-star"></span> <%= post.user.reputation %>
     		  	<% else %>

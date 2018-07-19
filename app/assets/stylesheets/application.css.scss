@@ -196,10 +196,9 @@ a:hover {
 
 .tags {
   display: inline-block;
-  margin: 0 2px;
+  margin: 6px 2px;
   white-space: nowrap;
-  transition: all .15s ease-in-out;
-  text-decoration: underline;
+  font-size: 0.9em;
 }
 
 .notation-wrapper {

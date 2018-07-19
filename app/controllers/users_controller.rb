@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.order('created_at DESC')
     @users = @user.followers
     @followed_users = @user.following
+    @audios = @posts.where.not(audio: [nil, ""])
   end
   
   def following
